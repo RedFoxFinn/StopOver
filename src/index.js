@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 
+import {StopOver} from './stopOver';
+
 ReactDOM.render(
   <React.StrictMode>
-    <p>StopOver</p>
+    <StopOver/>
   </React.StrictMode>,
   document.getElementById('root')
 );
