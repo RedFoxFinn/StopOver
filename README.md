@@ -35,7 +35,7 @@ I use [HSL Routing API](https://digitransit.fi/en/developers/apis/1-routing-api/
 
 Hmm.... Maybe...
 
-## Repo
+## Branches
 
 - [main](https://github.com/RedFoxFinn/StopOver)
 - [front](https://github.com/RedFoxFinn/StopOver/tree/front)
