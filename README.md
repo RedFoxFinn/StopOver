@@ -2,6 +2,7 @@
 # StopOver
 
 React + Redux + Apollo + Material UI = StopOver
+
 Application that'll make public transportation in Helsinki region easier.
 
 ## Problem to solve
@@ -10,7 +11,9 @@ Well, if you're happy with HSL (Helsinki Region Transportation) routing service 
 
 BUT.
 
-You might want your own personalised view to show timetables for your most used routes. Or timetables for your favorite stops.
+You might want your own personalised view to show timetables for your most used routes.
+
+Or timetables for your favorite stops.
 
 This app gives you these features.
 
