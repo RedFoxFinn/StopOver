@@ -1,0 +1,29 @@
+import { gql } from '@apollo/client';
+
+export const ITINERARY = gql`
+  query plan(
+      $fromPlace: String!,
+      $toPlace: String!,
+      $numItineraries: Int,
+      $walkSpeed: Float,
+      $walkReluctance: Float,
+      $walkBoardCost: Int,
+      $minTransferTime: Int,
+      $date: String,
+      $time: String,
+      $transportModes: []
+  ) {
+    plan(
+      fromPlace: $fromPlace,
+      toPlace: $toPlace,
+      numItineraries: $numItineraries,
+      walkSpeed: $walkSpeed,
+      walkReluctance: $walkReluctance,
+      walkBoardCost: $walkBoardCost,
+      minTransferTime: $minTransferTime,
+      date: $date,
+      time: $time,
+      transferModes: $transferModes
+    ) {}
+  }
+`;
