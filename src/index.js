@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
+import { ApolloProvider } from '@apollo/client';
 
+import { client } from './controllers/graphql/client';
+import {
+  appid,
+  appname
+} from '../package.json';
 import {StopOver} from './stopOver';
 
 ReactDOM.render(
   <React.StrictMode>
-    <StopOver/>
+    <ApolloProvider client={client} >
+      <StopOver id={appid} />
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
