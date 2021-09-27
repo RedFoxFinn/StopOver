@@ -1,5 +1,7 @@
 import { gql } from '@apollo/client';
 
+import { ITINERARY_DETAILS } from '../fragments/itinerary_details';
+
 export const ITINERARY = gql`
   query plan(
       $fromPlace: String!,
@@ -24,6 +26,9 @@ export const ITINERARY = gql`
       date: $date,
       time: $time,
       transferModes: $transferModes
-    ) {}
+    ) {
+      ...ItineraryDetails
+    }
   }
+  ${ITINERARY_DETAILS}
 `;
