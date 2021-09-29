@@ -1,0 +1,11 @@
+
+enum Transport {
+    BICYCLE
+    BUS
+    FERRY
+    RAIL
+    SUBWAY
+    TRAM
+    TRANSIT
+    WALK
+}

@@ -1,0 +1,14 @@
+
+type TransportMode {
+    mode: Transport
+}
+
+union Transport =
+    BICYCLE |
+    BUS |
+    FERRY |
+    RAIL |
+    SUBWAY |
+    TRAM |
+    TRANSIT |
+    WALK

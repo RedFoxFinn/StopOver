@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client';
 
 import { ITINERARY_DETAILS } from '../fragments/itinerary_details';
+import TransportMode from '../types/transportmode.graphql';
 
 export const ITINERARY = gql`
   query plan(
@@ -13,7 +14,7 @@ export const ITINERARY = gql`
       $minTransferTime: Int,
       $date: String,
       $time: String,
-      $transportModes: []
+      $transportModes: [TransportMode]
   ) {
     plan(
       fromPlace: $fromPlace,
@@ -25,7 +26,7 @@ export const ITINERARY = gql`
       minTransferTime: $minTransferTime,
       date: $date,
       time: $time,
-      transferModes: $transferModes
+      transportModes: $transportModes
     ) {
       ...ItineraryDetails
     }

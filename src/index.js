@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import { ApolloProvider } from '@apollo/client';
+import { Provider } from 'react-redux';
 
+import store from './controllers/redux/store';
 import { client } from './controllers/graphql/client';
 import {
   appid,
@@ -12,9 +14,11 @@ import {StopOver} from './stopOver';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ApolloProvider client={client} >
-      <StopOver id={appid} />
-    </ApolloProvider>
+    <Provider store={store} >
+      <ApolloProvider client={client} >
+        <StopOver id={appid} />
+      </ApolloProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
