@@ -2,7 +2,7 @@
   "name": "stopover",
   "appname": "StopOver",
   "appid": "rff.app.stopover",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "dependencies": {
     "@apollo/client": "^3.4.13",
@@ -32,8 +32,8 @@
     }
   },
   "scripts": {
-		"cm": "git-cz",
-		"release": "standard-version",
+    "cm": "git-cz",
+    "release": "standard-version",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
