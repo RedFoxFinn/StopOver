@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3](///compare/v0.2.2...v0.2.3) (2021-09-30)
+
+
+### Features
+
+* added new state section: component_controller: hides or shows UI components (ie. addressInput) 45e0fb5
+
 ### [0.2.2](///compare/v0.2.1...v0.2.2) (2021-09-30)
 
 ### [0.2.1](///compare/v0.2.0...v0.2.1) (2021-09-30)
