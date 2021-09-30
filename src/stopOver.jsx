@@ -1,21 +1,22 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import { ThemeProvider } from '@mui/material/styles';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import { HashRouter as Router } from 'react-router-dom';
 
 import { customTheme } from './theme/muiTheme';
-import { Itinerary } from './components/itinerary';
-import { InputModule } from './components/inputModule';
-import { GeocodeDisplayModule } from './components/geocodeDisplayModule';
+import Navigation, {Routing} from './components/navigation';
 
 export const StopOver = (props) => {
-
   return <Box>
-    <ThemeProvider theme={customTheme()}>
-      <p>StopOver</p>
-      <Itinerary/>
-      <InputModule/>
-      <GeocodeDisplayModule/>
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={customTheme()}>
+        <p>StopOver</p>
+        <Navigation/>
+        <Routing/>
+      </ThemeProvider>
+    </Router>
   </Box>;
 };
