@@ -21,13 +21,23 @@ const POSITIONSTACK_API_ADDRESS = (street, number, municipality) => {
 export const AddressInput = ({end = false, start = false, id = 'default'}) => {
   const addressState = end ? useSelector(state => state.end) : start ? useSelector(state => state.start) : null;
   const dispatch = useDispatch();
+  
   const fetchGeocode = () => {
     const { street, number, municipality } = addressState ?? null;
-    axios.get(`${POSITIONSTACK_API_BASE}${POSITIONSTACK_API_KEY()}${POSITIONSTACK_API_ADDRESS(street, number, municipality)}`)
+    start && axios.get(`${POSITIONSTACK_API_BASE}${POSITIONSTACK_API_KEY()}${POSITIONSTACK_API_ADDRESS(street, number, municipality)}`)
       .then((response) => {
         const {data} = response;
-        start && dispatch({type: 'location_start/setGeocode', geocode: data.data[0]});
-        end && dispatch({type: 'location_end/setGeocode', geocode: data.data[0]});
+        dispatch({type: 'location_start/setGeocode', geocode: data.data[0]});
+        dispatch({type: 'notification_control/setAlert', alert: {mode: 'info', message: 'Aloituspiste asetettu'}});
+      })
+      .catch((error) => {
+        console.warn(error.message);
+      });
+    end && axios.get(`${POSITIONSTACK_API_BASE}${POSITIONSTACK_API_KEY()}${POSITIONSTACK_API_ADDRESS(street, number, municipality)}`)
+      .then((response) => {
+        const {data} = response;
+        dispatch({type: 'location_end/setGeocode', geocode: data.data[0]});
+        dispatch({type: 'notification_control/setAlert', alert: {mode: 'info', message: 'Päätepiste asetettu'}});
       })
       .catch((error) => {
         console.warn(error.message);
