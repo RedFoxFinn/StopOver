@@ -1,38 +1,31 @@
 import React from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
 
 import { Itinerary } from './itinerary';
 import { InputModule } from './inputModule';
 import { GeocodeDisplayModule } from './geocodeDisplayModule';
 
 const Navigation = ({id}) => {
-  const activeStyle = {color: 'rgb(61,61,61)', textDecoration: 'solid underline', textDecorationColor: '#00c853'};
-  const inactiveStyle = {color: 'rgba(61,61,61,0.5)', textDecoration: 'none'};
-  const separator = <p style={{color: 'rgba(61,61,61,0.5)'}}> | </p>;
   return <nav style={{display: 'inline-flex', alignItems: 'center'}} >
-    <NavLink
+    <Divider orientation="vertical" variant="middle" flexItem />
+    <Button
       to='/'
-      inactiveStyle={inactiveStyle}
-    >??</NavLink>
-    {separator}
-    <NavLink
-      to='/set'
-      activeStyle={activeStyle}
-      inactiveStyle={inactiveStyle}
-    >Reittipisteet</NavLink>
-    {separator}
-    <NavLink
+      component={NavLink}
+    >Reittipisteet</Button>
+    <Divider orientation="vertical" variant="middle" flexItem />
+    <Button
       to='/details'
-      activeStyle={activeStyle}
-      inactiveStyle={inactiveStyle}
-    >Pistetiedot</NavLink>
-    {separator}
-    <NavLink
+      component={NavLink}
+    >Pistetiedot</Button>
+    <Divider orientation="vertical" variant="middle" flexItem />
+    <Button
       to='/itinerary'
-      activeStyle={activeStyle}
-      inactiveStyle={inactiveStyle}
-    >Reitti</NavLink>
+      component={NavLink}
+    >Reitti</Button>
+    <Divider orientation="vertical" variant="middle" flexItem />
   </nav>;
 };
 
@@ -42,8 +35,7 @@ export const Routing = (props) => {
 
   return <section >
     <Switch>
-      <Route exact path='/' children={<p>home?</p>} />
-      <Route path='/set' children={<InputModule/>} />
+      <Route exact path='/' children={<InputModule/>} />
       <Route path='/details' children={<GeocodeDisplayModule/>}/>
       <Route path='/itinerary' children={<Itinerary/>}/>
     </Switch>
