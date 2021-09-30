@@ -63,7 +63,8 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
         '& > :not(style)': { m: 1 },
         minWidth: 300,
         maxWidth: 800,
-        marginBottom: 2
+        marginBottom: 2,
+        backgroundColor: 'rgba(0,0,0,0.05)'
       }}
     >
       <Divider>
@@ -77,7 +78,8 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
         '& > :not(style)': { m: 1 },
         minWidth: 300,
         maxWidth: 800,
-        marginBottom: 2
+        marginBottom: 2,
+        backgroundColor: 'rgba(0,0,0,0.05)'
       }}
       noValidate
       autoComplete="off"
