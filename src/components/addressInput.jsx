@@ -62,7 +62,8 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
       sx={{
         '& > :not(style)': { m: 1 },
         minWidth: 300,
-        maxWidth: 800
+        maxWidth: 800,
+        marginBottom: 2
       }}
     >
       <Divider>
@@ -75,7 +76,8 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
       sx={{
         '& > :not(style)': { m: 1 },
         minWidth: 300,
-        maxWidth: 800
+        maxWidth: 800,
+        marginBottom: 2
       }}
       noValidate
       autoComplete="off"
@@ -115,6 +117,6 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
         variant='outlined'
         size='medium'
         color='secondary'
-        onClick={fetchGeocode}>Hae</Button>
+        onClick={fetchGeocode}>Aseta</Button>
     </Card>;
 };
