@@ -1,9 +1,14 @@
 import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import Box from '@mui/material/Box';
+
+import Card from '@mui/material/Card';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import PinDropIcon from '@mui/icons-material/PinDrop';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import Chip from '@mui/material/Chip';
 
 const POSITIONSTACK_API_BASE = 'http://api.positionstack.com/v1/forward?';
 const POSITIONSTACK_API_KEY = () => {
@@ -22,6 +27,7 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
       .then((response) => {
         const {data} = response;
         start && dispatch({type: 'location_start/setGeocode', geocode: data.data[0]});
+        end && dispatch({type: 'location_end/setGeocode', geocode: data.data[0]});
       })
       .catch((error) => {
         console.warn(error.message);
@@ -51,40 +57,64 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
   };
 
   return !end && !start
-    ? <p>Komponenttia ei ole määritelty oikein</p>
-    : <Box
-      component='form'
+    ? <Card
+      variant='outlined'
       sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
+        '& > :not(style)': { m: 1 },
+        minWidth: 300,
+        maxWidth: 800
+      }}
+    >
+      <Divider>
+        <Chip icon={<ErrorOutlineIcon/>} label='Virheelliset määritykset' color='error' variant='outlined' />
+      </Divider>
+    </Card>
+    : <Card
+      component='form'
+      variant='outlined'
+      sx={{
+        '& > :not(style)': { m: 1 },
+        minWidth: 300,
+        maxWidth: 800
       }}
       noValidate
       autoComplete="off"
       key={id}
       id={id}
     >
+      {end
+        ? <Divider>
+          <Chip icon={<PinDropIcon/>} label='Päätepiste' color='info' variant='outlined' />
+        </Divider>
+        : start
+          ? <Divider>
+            <Chip icon={<PinDropIcon/>} label='Lähtöpiste' color='info' variant='outlined' />
+          </Divider>
+          : null}
       <TextField
         key={`${id}-street`}
         InputLabelProps={{shrink: true}}
         label='katu' defaultValue=''
         size='small' onChange={handleStreet}
-        color='error' />
+        color='primary' />
       <TextField
         key={`${id}-number`}
         InputLabelProps={{shrink: true}}
         label='numero' defaultValue=''
         size='small' onChange={handleNumber}
-        color='warning' />
+        sx={{maxWidth: 80}}
+        color='primary' />
       <TextField
         key={`${id}-municipality`}
         InputLabelProps={{shrink: true}}
         label='kunta' defaultValue=''
         size='small' onChange={handleMunicipality}
-        color='success' />
+        color='primary' />
       <Button
         key={`${id}-query`}
         variant='outlined'
         size='medium'
-        color='info'
+        color='secondary'
         onClick={fetchGeocode}>Hae</Button>
-    </Box>;
+    </Card>;
 };
