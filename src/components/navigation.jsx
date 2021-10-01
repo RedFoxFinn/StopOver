@@ -20,7 +20,7 @@ const Navigation = ({id}) => {
       }}
       variant='outlined'
       component={NavLink}
-    >Reittipisteet</Button>
+    >Reitit</Button>
     <Divider orientation="vertical" variant="middle" color={green['A700']} flexItem />
     <Button
       to='/details'
@@ -32,26 +32,24 @@ const Navigation = ({id}) => {
     >Pistetiedot</Button>
     <Divider orientation="vertical" variant="middle" color={green['A700']} flexItem />
     <Button
-      to='/itinerary'
+      to='/planning'
       sx={{
         margin: 1
       }}
       variant='outlined'
       component={NavLink}
-    >Reitti</Button>
+    >Reittisuunnittelu</Button>
     <Divider orientation="vertical" variant="middle" color={green['A700']} flexItem />
   </nav>;
 };
 
 export const Routing = (props) => {
-  const startAddress = useSelector(state => state.start);
-  const endAddress = useSelector(state => state.end);
-
+  
   return <section >
     <Switch>
-      <Route exact path='/' children={<InputModule/>} />
+      <Route path='/planning' children={<InputModule/>} />
       <Route path='/details' children={<GeocodeDisplayModule/>}/>
-      <Route path='/itinerary' children={<Itinerary/>}/>
+      <Route exact path='/' children={<Itinerary/>}/>
     </Switch>
   </section>;
 };
