@@ -3,6 +3,7 @@ import { NavLink, Route, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
+import Tabs from '@mui/material/Tabs';
 import { green } from '@mui/material/colors';
 
 import { Itinerary } from './itinerary';

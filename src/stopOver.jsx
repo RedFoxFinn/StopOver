@@ -11,10 +11,19 @@ import { HashRouter as Router } from 'react-router-dom';
 
 import { customTheme } from './theme/muiTheme';
 import Navigation, {Routing} from './components/navigation';
+import { getRoutes } from './controllers/app/localstorage_routes';
 
 export const StopOver = (props) => {
   const {alert} = useSelector(state => state.notification);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const routes = getRoutes();
+    if (routes !== null && routes.length > 0) {
+      dispatch({type: 'route_control/setRoutes', routes: routes});
+      dispatch({type: 'notification_control/setAlert', alert: {message: 'Reitit palautettu'}});
+    }
+  }, []);
 
   const action = (
     <React.Fragment>

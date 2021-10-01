@@ -27,8 +27,10 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
     start && axios.get(`${POSITIONSTACK_API_BASE}${POSITIONSTACK_API_KEY()}${POSITIONSTACK_API_ADDRESS(street, number, municipality)}`)
       .then((response) => {
         const {data} = response;
-        dispatch({type: 'location_start/setGeocode', geocode: data.data[0]});
-        dispatch({type: 'notification_control/setAlert', alert: {mode: 'info', message: 'Aloituspiste asetettu'}});
+        if (data.data[0]?.latitude) {
+          dispatch({type: 'location_start/setGeocode', geocode: data.data[0]});
+          dispatch({type: 'notification_control/setAlert', alert: {mode: 'info', message: 'Aloituspiste asetettu'}});
+        }
       })
       .catch((error) => {
         console.warn(error.message);
@@ -36,8 +38,10 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
     end && axios.get(`${POSITIONSTACK_API_BASE}${POSITIONSTACK_API_KEY()}${POSITIONSTACK_API_ADDRESS(street, number, municipality)}`)
       .then((response) => {
         const {data} = response;
-        dispatch({type: 'location_end/setGeocode', geocode: data.data[0]});
-        dispatch({type: 'notification_control/setAlert', alert: {mode: 'info', message: 'Päätepiste asetettu'}});
+        if (data.data[0]?.latitude) {
+          dispatch({type: 'location_end/setGeocode', geocode: data.data[0]});
+          dispatch({type: 'notification_control/setAlert', alert: {mode: 'info', message: 'Päätepiste asetettu'}});
+        }
       })
       .catch((error) => {
         console.warn(error.message);
