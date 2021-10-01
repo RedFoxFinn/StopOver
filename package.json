@@ -2,7 +2,7 @@
   "name": "stopover",
   "appname": "StopOver",
   "appid": "rff.app.stopover",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "private": false,
   "dependencies": {
     "@apollo/client": "^3.4.13",
