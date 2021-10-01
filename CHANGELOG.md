@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](///compare/v0.2.8...v0.3.0) (2021-10-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* localstorage_routes -tools use JSON.(parse/stringify) to make functionalities work,
+notifications on propriate actions added, clearing start and end details from their respective
+slices on route creation
+
+### Features
+
+* application loads routes from localstorage and sets new routes there f3ba5d2
+
 ### [0.2.8](///compare/v0.2.7...v0.2.8) (2021-09-30)
 
 
