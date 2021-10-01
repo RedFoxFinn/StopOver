@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Box from '@mui/material/Box';
 import { ThemeProvider } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Snackbar from '@mui/material/Snackbar';
@@ -41,13 +40,14 @@ export const StopOver = (props) => {
     </React.Fragment>
   );
 
-  return <Box>
+  return <article id={props.id} data-testid={props.id} >
     <Router>
       <ThemeProvider theme={customTheme()}>
         <Typography variant='h5' >StopOver</Typography>
-        <Navigation/>
-        <Routing/>
+        <Navigation id={`${props.id}.navigation`} />
+        <Routing id={`${props.id}.content`} />
         <Snackbar
+          id={`${props.id}.snack`}
           open={alert !== null}
           autoHideDuration={6000}
           onClose={() => dispatch({type: 'notification_control/resetAlert'})}
@@ -56,5 +56,5 @@ export const StopOver = (props) => {
         />
       </ThemeProvider>
     </Router>
-  </Box>;
+  </article>;
 };

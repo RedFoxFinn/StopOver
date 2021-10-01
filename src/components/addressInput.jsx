@@ -21,6 +21,12 @@ const POSITIONSTACK_API_ADDRESS = (street, number, municipality) => {
 export const AddressInput = ({end = false, start = false, id = 'default'}) => {
   const addressState = end ? useSelector(state => state.end) : start ? useSelector(state => state.start) : null;
   const dispatch = useDispatch();
+
+  const clearFields = () => {
+    document.getElementById(`${id}-street`).value = '';
+    document.getElementById(`${id}-number`).value = '';
+    document.getElementById(`${id}-municipality`).value = '';
+  };
   
   const fetchGeocode = () => {
     const { street, number, municipality } = addressState ?? null;
@@ -30,6 +36,7 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
         if (data.data[0]?.latitude) {
           dispatch({type: 'location_start/setGeocode', geocode: data.data[0]});
           dispatch({type: 'notification_control/setAlert', alert: {mode: 'info', message: 'Aloituspiste asetettu'}});
+          clearFields();
         }
       })
       .catch((error) => {
@@ -72,6 +79,9 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
 
   return !end && !start
     ? <Card
+      id={id}
+      data-testid={id}
+      key={id}
       variant='outlined'
       sx={{
         '& > :not(style)': { m: 1 },
@@ -86,6 +96,9 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
       </Divider>
     </Card>
     : <Card
+      id={id}
+      data-testid={id}
+      key={id}
       component='form'
       variant='outlined'
       sx={{
@@ -110,12 +123,16 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
           </Divider>
           : null}
       <TextField
+        id={`${id}-street`}
+        data-testid={`${id}-street`}
         key={`${id}-street`}
         InputLabelProps={{shrink: true}}
         label='katu' defaultValue=''
         size='small' onChange={handleStreet}
         color='primary' />
       <TextField
+        id={`${id}-number`}
+        data-testid={`${id}-number`}
         key={`${id}-number`}
         InputLabelProps={{shrink: true}}
         label='numero' defaultValue=''
@@ -123,12 +140,16 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
         sx={{maxWidth: 80}}
         color='primary' />
       <TextField
+        id={`${id}-municipality`}
+        data-testid={`${id}-municipality`}
         key={`${id}-municipality`}
         InputLabelProps={{shrink: true}}
         label='kunta' defaultValue=''
         size='small' onChange={handleMunicipality}
         color='primary' />
       <Button
+        id={`${id}-query`}
+        data-testid={`${id}-query`}
         key={`${id}-query`}
         variant='outlined'
         size='medium'

@@ -1,9 +1,7 @@
 import React from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
-import Tabs from '@mui/material/Tabs';
 import { green } from '@mui/material/colors';
 
 import { Itinerary } from './itinerary';
@@ -11,7 +9,7 @@ import { InputModule } from './inputModule';
 import { GeocodeDisplayModule } from './geocodeDisplayModule';
 
 const Navigation = ({id}) => {
-  return <nav style={{display: 'inline-flex', alignItems: 'center'}} >
+  return <nav id={id} data-testid={id} style={{display: 'inline-flex', alignItems: 'center'}} >
     <Divider orientation="vertical" variant="middle" color={green['A700']} flexItem />
     <Button
       to='/'
@@ -45,11 +43,11 @@ const Navigation = ({id}) => {
 
 export const Routing = (props) => {
   
-  return <section >
+  return <section id={props.id} data-testid={props.id} >
     <Switch>
-      <Route path='/planning' children={<InputModule/>} />
-      <Route path='/details' children={<GeocodeDisplayModule/>}/>
-      <Route exact path='/' children={<Itinerary/>}/>
+      <Route path='/planning' children={<InputModule id={`${props.id}.planning`} />} />
+      <Route path='/details' children={<GeocodeDisplayModule id={`${props.id}.geocode`} />}/>
+      <Route exact path='/' children={<Itinerary id={`${props.id}.routes`} />}/>
     </Switch>
   </section>;
 };
