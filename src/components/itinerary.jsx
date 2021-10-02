@@ -7,15 +7,11 @@ import {ITINERARY} from '../controllers/graphql/queries/itinerary';
 export const Itinerary = (props) => {
   const {} = props;
   const [loadItinerary, {called, data, error, loading}] = useLazyQuery(ITINERARY, {});
-  if (called) {
-    if (loading) {
-      return <p>Itinerary loading</p>;
-    } else if (error) {
-      return <p>Itinerary loading failed</p>;
-    } else {
-      return <p>Itinerary loaded</p>;
-    }
-  } else {
-    return <p>Itinerary loading not initialized</p>;
-  }
+  
+  return <section id={props.id} data-testid={props.id} >
+    {called && loading && <p>Itinerary loading</p>}
+    {called && error && <p>Itinerary loading failed</p>}
+    {called && data && <p>Itinerary loaded</p>}
+    {!called && <p>Itinerary loading not initialized</p>}
+  </section>;
 };
