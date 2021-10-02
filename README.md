@@ -5,6 +5,12 @@ React + Redux + Apollo + Material UI = StopOver
 
 Application that'll make public transportation in Helsinki region easier.
 
+## Status
+
+![test/build/deploy](https://github.com/RedFoxFinn/StopOver/workflows/test\/build\/deploy/badge.svg)
+
+[![codecov](https://codecov.io/gh/RedFoxFinn/StopOver/branch/front/graph/badge.svg?token=R6GU7IO8S5)](https://codecov.io/gh/RedFoxFinn/StopOver)
+
 ## Problem to solve
 
 Well, if you're happy with HSL (Helsinki Region Transportation) routing service [Reittiopas](https://reittiopas.fi), this app might not give anything new to you.
