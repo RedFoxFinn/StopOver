@@ -10,7 +10,9 @@ import PinDropIcon from '@mui/icons-material/PinDrop';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import Chip from '@mui/material/Chip';
 
-const POSITIONSTACK_API_BASE = process.env.NODE_ENV === 'production' ? 'https://api.positionstack.com/v1/forward?' : 'http://api.positionstack.com/v1/forward?';
+const POSITIONSTACK_API_BASE = process.env.NODE_ENV === 'production'
+  ? 'https://api.positionstack.com/v1/forward?'
+  : 'http://api.positionstack.com/v1/forward?';
 const POSITIONSTACK_API_KEY = () => {
   return `access_key=${process.env.REACT_APP_POSITIONSTACK_API_KEY}&`;
 };
