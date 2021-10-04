@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.17](https://github.com/RedFoxFinn/StopOver/compare/v0.3.16...v0.3.17) (2021-10-04)
+
+
+### Bug Fixes
+
+* http api access permission fix ([d685d9e](https://github.com/RedFoxFinn/StopOver/commit/d685d9ea54bb1bdc1e14b1a683fead7b7181d90d))
+
 ### [0.3.16](https://github.com/RedFoxFinn/StopOver/compare/v0.3.15...v0.3.16) (2021-10-04)
 
 
