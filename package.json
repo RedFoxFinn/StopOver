@@ -2,6 +2,7 @@
   "name": "stopover",
   "appname": "StopOver",
   "appid": "rff.app.stopover",
+  "homepage": "https://redfoxfinn.github.io/StopOver/",
   "version": "0.3.4",
   "private": false,
   "dependencies": {
