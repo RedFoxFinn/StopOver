@@ -43,7 +43,7 @@ export const StopOver = (props) => {
   return <article id={props.id} data-testid={props.id} >
     <Router>
       <ThemeProvider theme={customTheme()}>
-        <Typography variant='h5' >StopOver</Typography>
+        <Typography variant='h5' >StopOver - {props.ver}</Typography>
         <Navigation id={`${props.id}.navigation`} />
         <Routing id={`${props.id}.content`} />
         <Snackbar

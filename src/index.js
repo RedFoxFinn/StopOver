@@ -8,7 +8,8 @@ import store from './controllers/redux/store';
 import { client } from './controllers/graphql/client';
 import {
   appid,
-  appname
+  appname,
+  version
 } from '../package.json';
 import {StopOver} from './stopOver';
 
@@ -16,7 +17,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store} >
       <ApolloProvider client={client} >
-        <StopOver id={appid} />
+        <StopOver id={appid} ver={version} />
       </ApolloProvider>
     </Provider>
   </React.StrictMode>,
