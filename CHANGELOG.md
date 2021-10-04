@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.11](https://github.com/RedFoxFinn/StopOver/compare/v0.3.10...v0.3.11) (2021-10-04)
+
+
+### Bug Fixes
+
+* api should be http, baseurl is http but request was done as https, fixed ([d5bb8fc](https://github.com/RedFoxFinn/StopOver/commit/d5bb8fceae7f0f96d67954c7a72b123c48e468fa))
+
 ### [0.3.10](https://github.com/RedFoxFinn/StopOver/compare/v0.3.9...v0.3.10) (2021-10-04)
 
 
