@@ -8,5 +8,5 @@ const POSITIONSTACK_API_KEY = () => {
 export const API_BASE_URL = () => `${POSITIONSTACK_API_BASE}${POSITIONSTACK_API_KEY()}`;
 
 export const ax = axios.create({
-  baseUrl: `${API_BASE_URL()}`
+  baseUrl: API_BASE_URL()
 });
