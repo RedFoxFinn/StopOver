@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
 
 import Card from '@mui/material/Card';
 import TextField from '@mui/material/TextField';
@@ -10,14 +9,10 @@ import PinDropIcon from '@mui/icons-material/PinDrop';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import Chip from '@mui/material/Chip';
 
-const POSITIONSTACK_API_BASE = process.env.NODE_ENV === 'production'
-  ? 'https://api.positionstack.com/v1/forward?'
-  : 'http://api.positionstack.com/v1/forward?';
-const POSITIONSTACK_API_KEY = () => {
-  return `access_key=${process.env.REACT_APP_POSITIONSTACK_API_KEY}&`;
-};
-const POSITIONSTACK_API_ADDRESS = (street, number, municipality) => {
-  return `&query=${street}%20${number},%20${municipality}&output=json&limit=1`;
+import { ax, API_BASE_URL } from '../controllers/app/api';
+
+const POSITIONSTACK_API_ADDRESS_QUERY = (street, number, municipality) => {
+  return `query=${street}%20${number},%20${municipality}&output=json&limit=1`;
 };
 
 export const AddressInput = ({end = false, start = false, id = 'default'}) => {
@@ -32,7 +27,7 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
   
   const fetchGeocode = () => {
     const { street, number, municipality } = addressState ?? null;
-    start && axios.get(`${POSITIONSTACK_API_BASE}${POSITIONSTACK_API_KEY()}${POSITIONSTACK_API_ADDRESS(street, number, municipality)}`)
+    start && ax.get(`${API_BASE_URL()}${POSITIONSTACK_API_ADDRESS_QUERY(street, number, municipality)}`)
       .then((response) => {
         const {data} = response;
         if (data.data[0]?.latitude) {
@@ -44,7 +39,7 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
       .catch((error) => {
         console.warn(error.message);
       });
-    end && axios.get(`${POSITIONSTACK_API_BASE}${POSITIONSTACK_API_KEY()}${POSITIONSTACK_API_ADDRESS(street, number, municipality)}`)
+    end && ax.get(`${API_BASE_URL()}${POSITIONSTACK_API_ADDRESS_QUERY(street, number, municipality)}`)
       .then((response) => {
         const {data} = response;
         if (data.data[0]?.latitude) {
