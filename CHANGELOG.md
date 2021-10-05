@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.24](https://github.com/RedFoxFinn/StopOver/compare/v0.3.23...v0.3.24) (2021-10-05)
+
+
+### Bug Fixes
+
+* typo fix NOMINAV >> NOMINATIM ([39ce711](https://github.com/RedFoxFinn/StopOver/commit/39ce7110a61de83b691779a2457ed74f5079521c))
+
 ### [0.3.23](https://github.com/RedFoxFinn/StopOver/compare/v0.3.22...v0.3.23) (2021-10-05)
 
 
