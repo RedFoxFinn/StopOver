@@ -29,6 +29,6 @@ export const routeSlice = createSlice({
   }
 });
 
-export const { setRoutes, resetRoutes, addRoute } = routeSlice.actions;
+export const { setRoutes, resetRoutes, addRoute, setDefault, resetDefault } = routeSlice.actions;
 
 export default routeSlice.reducer;
