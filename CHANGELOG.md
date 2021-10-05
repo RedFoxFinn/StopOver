@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.2](https://github.com/RedFoxFinn/StopOver/compare/v0.4.1...v0.4.2) (2021-10-05)
+
+
+### Bug Fixes
+
+* added missing actions to route_control exports ([ae60536](https://github.com/RedFoxFinn/StopOver/commit/ae6053663d43c0ccf6d21e2e48739adf0bac7958))
+
 ### [0.4.1](https://github.com/RedFoxFinn/StopOver/compare/v0.4.0...v0.4.1) (2021-10-05)
 
 
