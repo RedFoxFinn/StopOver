@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.23](https://github.com/RedFoxFinn/StopOver/compare/v0.3.22...v0.3.23) (2021-10-05)
+
+
+### Bug Fixes
+
+* switched from positionstack api to nominatim api >> http -> https, should fix permission issue ([74f2fc8](https://github.com/RedFoxFinn/StopOver/commit/74f2fc823a8f808345e292fc23e590dbc2f6ee27))
+
 ### [0.3.22](https://github.com/RedFoxFinn/StopOver/compare/v0.3.21...v0.3.22) (2021-10-04)
 
 ### [0.3.21](https://github.com/RedFoxFinn/StopOver/compare/v0.3.20...v0.3.21) (2021-10-04)
