@@ -16,6 +16,7 @@ export const StopOver = (props) => {
   const {alert} = useSelector(state => state.notification);
   const dispatch = useDispatch();
 
+  useEffect(() => {}, []);
   useEffect(() => {
     const routes = getRoutes();
     if (routes !== null && routes.length > 0) {
