@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/RedFoxFinn/StopOver/compare/v0.3.24...v0.4.0) (2021-10-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* default route will be the initial route for app to show
+
+### Features
+
+* added functionality to provide defaultroute addresses ([301bfd0](https://github.com/RedFoxFinn/StopOver/commit/301bfd0b8a52c3531250d5e8ea30efd0f7ecca83))
+
 ### [0.3.24](https://github.com/RedFoxFinn/StopOver/compare/v0.3.23...v0.3.24) (2021-10-05)
 
 
