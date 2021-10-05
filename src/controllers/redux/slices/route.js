@@ -3,23 +3,29 @@ import {createSlice} from '@reduxjs/toolkit';
 export const routeSlice = createSlice({
   name: 'route_control',
   initialState: {
-    routes: null,
+    routes: [],
+    defaultroute: null
   },
   reducers: {
     setRoutes: (state, action) => {
       state.routes = action.routes;
     },
     resetRoutes: (state, action) => {
-      state.routes = null;
+      state.routes = [];
     },
     addRoute: (state, action) => {
-      if (state.routes !== null && state.routes.length > 0) {
+      if (state.routes.length > 0) {
         state.routes = [...state.routes, action.route];
       } else {
         state.routes = [action.route];
       }
-    
-    }
+    },
+    setDefault: (state, action) => {
+      state.defaultroute = action.route;
+    },
+    resetDefault: (state, action) => {
+      state.defaultroute = null;
+    }, 
   }
 });
 
