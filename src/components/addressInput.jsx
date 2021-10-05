@@ -11,8 +11,8 @@ import Chip from '@mui/material/Chip';
 
 import { ax, API_BASE_URL } from '../controllers/app/api';
 
-const POSITIONSTACK_API_ADDRESS_QUERY = (street, number, municipality) => {
-  return `query=${street}%20${number},%20${municipality}&output=json&limit=1`;
+const NOMINATIV_API_ADDRESS_QUERY = (street, number, municipality) => {
+  return `street=${number}%20${street}&city=${municipality}&limit=2&format=json`;
 };
 
 export const AddressInput = ({end = false, start = false, id = 'default'}) => {
@@ -27,11 +27,11 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
   
   const fetchGeocode = () => {
     const { street, number, municipality } = addressState ?? null;
-    start && ax.get(`${API_BASE_URL()}${POSITIONSTACK_API_ADDRESS_QUERY(street, number, municipality)}`)
+    start && ax.get(`${API_BASE_URL()}${NOMINATIV_API_ADDRESS_QUERY(street, number, municipality)}`)
       .then((response) => {
         const {data} = response;
-        if (data.data[0]?.latitude) {
-          dispatch({type: 'location_start/setGeocode', geocode: data.data[0]});
+        if (data.length > 0 && data[0]?.lat && data[0]?.address) {
+          dispatch({type: 'location_start/setGeocode', geocode: data[0]});
           dispatch({type: 'notification_control/setAlert', alert: {mode: 'info', message: 'Aloituspiste asetettu'}});
           clearFields();
         }
@@ -39,12 +39,13 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
       .catch((error) => {
         console.warn(error.message);
       });
-    end && ax.get(`${API_BASE_URL()}${POSITIONSTACK_API_ADDRESS_QUERY(street, number, municipality)}`)
+    end && ax.get(`${API_BASE_URL()}${NOMINATIV_API_ADDRESS_QUERY(street, number, municipality)}`)
       .then((response) => {
         const {data} = response;
-        if (data.data[0]?.latitude) {
-          dispatch({type: 'location_end/setGeocode', geocode: data.data[0]});
+        if (data.length > 0 && data[0]?.lat && data[0]?.address) {
+          dispatch({type: 'location_end/setGeocode', geocode: data[0]});
           dispatch({type: 'notification_control/setAlert', alert: {mode: 'info', message: 'Päätepiste asetettu'}});
+          clearFields();
         }
       })
       .catch((error) => {

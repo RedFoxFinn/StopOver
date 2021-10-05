@@ -1,11 +1,8 @@
 import axios from 'axios';
 
-const POSITIONSTACK_API_BASE = 'http://api.positionstack.com/v1/forward?';
-const POSITIONSTACK_API_KEY = () => {
-  return `access_key=${process.env.REACT_APP_POSITIONSTACK_API_KEY}&`;
-};
+const NOMINATIV_API_BASE = 'https://nominatim.openstreetmap.org/search?addressdetails=1&';
 
-export const API_BASE_URL = () => `${POSITIONSTACK_API_BASE}${POSITIONSTACK_API_KEY()}`;
+export const API_BASE_URL = () => `${NOMINATIV_API_BASE}`;
 
 export const ax = axios.create({
   baseUrl: API_BASE_URL()

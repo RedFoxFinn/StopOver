@@ -1,18 +1,18 @@
 
 export function createRoute(start, end) {
-  const startPoint = `${start.name}, ${start?.locality || start.administrative_area}::${start.latitude},${start.longitude}`;
-  const endPoint = `${end.name}, ${end.locality ?? end.administrative_area}::${end.latitude},${end.longitude}`;
+  const startPoint = `${start?.address?.house_number}, ${start?.address?.road}, ${start?.address?.city || start?.address?.town}::${start?.lat},${start?.lon}`;
+  const endPoint = `${end?.address?.house_number}, ${end?.address?.road}, ${end?.address?.city || end?.address?.town}::${end?.lat},${end?.lon}`;
   const sp = {
     queryLocation: startPoint,
-    street: start.street,
-    number: start.number,
-    municipality: start?.locality || start.administrative_area
+    street: start?.address?.road,
+    number: start?.address?.house_number,
+    municipality: start?.address?.city || start?.address?.town
   };
   const ep = {
     queryLocation: endPoint,
-    street: end.street,
-    number: end.number,
-    municipality: end?.locality || end.administrative_area
+    street: end?.address?.road,
+    number: end?.address?.house_number,
+    municipality: end?.address?.city || end?.address?.town
   };
   return {
     start: sp,

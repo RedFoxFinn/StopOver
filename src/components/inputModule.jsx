@@ -22,10 +22,10 @@ export const InputModule = (props) => {
   };
 
   const checkStartGeocode = () => {
-    return startAddress.geocode !== null && startAddress.geocode.hasOwnProperty('latitude');
+    return startAddress.geocode !== null && startAddress.geocode.hasOwnProperty('lat');
   };
   const checkEndGeocode = () => {
-    return endAddress.geocode !== null && endAddress.geocode.hasOwnProperty('latitude');
+    return endAddress.geocode !== null && endAddress.geocode.hasOwnProperty('lat');
   };
 
   return <section id={props.id} data-testid={props.id} >
