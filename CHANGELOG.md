@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/RedFoxFinn/StopOver/compare/v0.4.0...v0.4.1) (2021-10-05)
+
+
+### Features
+
+* added redux slice property and actions to handle default route ([58dd503](https://github.com/RedFoxFinn/StopOver/commit/58dd503725ff84e3396fb497859f1c317fdb8ddc))
+
 ## [0.4.0](https://github.com/RedFoxFinn/StopOver/compare/v0.3.24...v0.4.0) (2021-10-05)
 
 
