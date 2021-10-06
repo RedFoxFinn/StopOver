@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.3](https://github.com/RedFoxFinn/StopOver/compare/v0.4.2...v0.4.3) (2021-10-06)
+
+
+### Features
+
+* defaultroute handling (stopOver.jsx & route.js slice) with notification control ([9564e4e](https://github.com/RedFoxFinn/StopOver/commit/9564e4e4d945ad5c47e7ea849204516493ce23b7))
+
 ### [0.4.2](https://github.com/RedFoxFinn/StopOver/compare/v0.4.1...v0.4.2) (2021-10-05)
 
 
