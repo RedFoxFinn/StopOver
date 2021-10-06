@@ -9,11 +9,7 @@ import PinDropIcon from '@mui/icons-material/PinDrop';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import Chip from '@mui/material/Chip';
 
-import { ax, API_BASE_URL } from '../controllers/app/api';
-
-const NOMINATIM_API_ADDRESS_QUERY = (street, number, municipality) => {
-  return `street=${number}%20${street}&city=${municipality}&limit=2&format=json`;
-};
+import { ax, API_BASE_URL, NOMINATIM_API_ADDRESS_QUERY } from '../controllers/app/api';
 
 export const AddressInput = ({end = false, start = false, id = 'default'}) => {
   const addressState = end ? useSelector(state => state.end) : start ? useSelector(state => state.start) : null;

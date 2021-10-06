@@ -1,4 +1,8 @@
 
+/**
+ * defaultroute is constant that will provide the start- and endpoint addresses
+ * of the default route of the application and API calls
+ */
 export const defaultroute = {
   start: {
     street: 'soittilanmäki',
