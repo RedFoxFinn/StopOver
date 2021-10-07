@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.2](https://github.com/RedFoxFinn/StopOver/compare/v0.5.1...v0.5.2) (2021-10-07)
+
+
+### Features
+
+* added primitive version of transport mode selector (not fuctional and not to UI yet tho...) ([04ccc54](https://github.com/RedFoxFinn/StopOver/commit/04ccc54d0700b2550860d0ad5c38abc04cb8cb9e))
+
 ### [0.5.1](https://github.com/RedFoxFinn/StopOver/compare/v0.5.0...v0.5.1) (2021-10-07)
 
 ## [0.5.0](https://github.com/RedFoxFinn/StopOver/compare/v0.4.4...v0.5.0) (2021-10-07)
