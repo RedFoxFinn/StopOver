@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import { green } from '@mui/material/colors';
 
-import { Itinerary } from './itinerary';
+import { Itineraries } from './itineraries';
 import { InputModule } from './inputModule';
 import { GeocodeDisplayModule } from './geocodeDisplayModule';
 
@@ -47,7 +47,7 @@ export const Routing = (props) => {
     <Switch>
       <Route path='/planning' children={<InputModule id={`${props.id}.planning`} />} />
       <Route path='/details' children={<GeocodeDisplayModule id={`${props.id}.geocode`} />}/>
-      <Route exact path='/' children={<Itinerary id={`${props.id}.routes`} />}/>
+      <Route exact path='/' children={<Itineraries id={`${props.id}.routes`} />}/>
     </Switch>
   </section>;
 };

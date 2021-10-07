@@ -5,7 +5,7 @@ import { useLazyQuery } from '@apollo/client';
 import {ITINERARY} from '../controllers/graphql/queries/itinerary';
 
 export const Itinerary = (props) => {
-  const {} = props;
+  const {route, mode} = props;
   const [loadItinerary, {called, data, error, loading}] = useLazyQuery(ITINERARY, {});
   
   return <section id={props.id} data-testid={props.id} >
