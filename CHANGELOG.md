@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/RedFoxFinn/StopOver/compare/v0.4.4...v0.5.0) (2021-10-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* on root ('/') route switched component Itinerary to Itineraries which will be
+controlling viewing the Itinerary components based on routes available in the application
+
+### Features
+
+* +Itineraries.jsx to be parent component for default & user routes; +preferences slice ([13c093d](https://github.com/RedFoxFinn/StopOver/commit/13c093dda5c61a494a45339d44caac9d0031c5f5))
+
 ### [0.4.4](https://github.com/RedFoxFinn/StopOver/compare/v0.4.3...v0.4.4) (2021-10-07)
 
 
