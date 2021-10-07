@@ -3,15 +3,17 @@
  * defaultroute is constant that will provide the start- and endpoint addresses
  * of the default route of the application and API calls
  */
-export const defaultroute = {
-  start: {
+export const start = () => {
+  return {
     street: 'soittilanmäki',
     number: '6',
     municipality: 'espoo'
-  },
-  end: {
+  };
+};
+export const end = () => {
+  return {
     street: 'lapinlahdenkatu',
     number: '16',
     municipality: 'helsinki'
-  },
+  };
 };
