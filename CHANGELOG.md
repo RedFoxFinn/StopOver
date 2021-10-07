@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.4](https://github.com/RedFoxFinn/StopOver/compare/v0.4.3...v0.4.4) (2021-10-07)
+
+
+### Bug Fixes
+
+* fixed default route loading, creation & notification control related to route loading ([27e0596](https://github.com/RedFoxFinn/StopOver/commit/27e0596451b7adc9057bf9c38341071c4d6ca9f2))
+
 ### [0.4.3](https://github.com/RedFoxFinn/StopOver/compare/v0.4.2...v0.4.3) (2021-10-06)
 
 
