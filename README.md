@@ -32,17 +32,23 @@ Applications, softwares, firmwares... They require code. So does this app.
 On the frontend I've used some vanilla JS (EcmaScript) magic and some cool libraries I do like.
 
 - React for building components, views.. all of it basicly
-- Redux(-toolkit) for managing the application state (sure, context and useState are cool but sometimes global state just is worth it)
+- Redux (newer toolkit-version) for managing the application state (sure, context and useState are cool but sometimes global state just is worth it) with additional help from react-redux
 - Apollo (GraphQL) for keeping routing and timetable data updated for you
 - MUI (Material UI) for more consistent elements
+- React router for handling different views
+- Axios for geocoding data querying
 
 ### API
 
-I use [HSL Routing API](https://digitransit.fi/en/developers/apis/1-routing-api/) for having up-to-date data on the view
+I use [HSL Routing API](https://digitransit.fi/en/developers/apis/1-routing-api/) for having up-to-date data on the view and for precise routing with HSL API I use [Nominatim Geocoding API](https://nominatim.openstreetmap.org/) for converting user defined addresses to JSON data containing latitude and longitude.
 
-### Electron?
+### Electron ?
 
 Hmm.... Maybe...
+
+### Docker ?
+
+I suppose...
 
 ## Branches
 
