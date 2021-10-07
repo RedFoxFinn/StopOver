@@ -10,7 +10,7 @@ import Navigation, { Routing } from './navigation';
 import store from '../controllers/redux/store';
 import { GeocodeDisplayModule } from './geocodeDisplayModule';
 import { InputModule } from './inputModule';
-import { Itinerary } from './itinerary';
+import { Itineraries } from './itineraries';
 
 describe('navigation - unit tests', () => {
   let dummy = false;
@@ -32,10 +32,12 @@ describe('navigation - unit tests', () => {
 describe('routing - unit tests', () => {
   const baseid='stopover.unit.test';
   let dummy = false;
-  beforeEach(() => render(<Router >
-    <Navigation id={`${baseid}.navigation`} />
-    <Routing id={`${baseid}.routing`} />
-  </Router>));
+  beforeEach(() => render(<Provider store={store} >
+    <Router >
+      <Navigation id={`${baseid}.navigation`} />
+      <Routing id={`${baseid}.routing`} />
+    </Router>
+  </Provider>));
   it('dummy', () => {
     expect(dummy).toBe(false);
     dummy = true;
@@ -52,10 +54,12 @@ describe('routing - integration tests', () => {
   const baseid='stopover.unit.test';
   let dummy = false;
   beforeEach(() => render(<Provider store={store} >
-    <Router >
-      <Navigation id={`${baseid}.navigation`} />
-      <Routing id={`${baseid}.routing`} />
-    </Router>
+    <Provider store={store} >
+      <Router >
+        <Navigation id={`${baseid}.navigation`} />
+        <Routing id={`${baseid}.routing`} />
+      </Router>
+    </Provider>
   </Provider>));
   it('dummy', () => {
     expect(dummy).toBe(false);
@@ -65,7 +69,7 @@ describe('routing - integration tests', () => {
   it('routing "/" >> Itinerary', () => {
     const component = screen.queryByTestId(`${baseid}.routing.routes`);
     expect(component).toBeTruthy();
-    isCompositeComponentWithType(component, Itinerary);
+    isCompositeComponentWithType(component, Itineraries);
   });
   it('routing "/details" >> GeocodeDisplayModule', () => {
     userEvent.click(screen.getByText('Pistetiedot'));
