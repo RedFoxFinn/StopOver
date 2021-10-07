@@ -6,6 +6,24 @@ import { AddressInput } from './addressInput';
 import { createRoute } from '../controllers/app/routecreator';
 import { addLocalRoute } from '../controllers/app/localstorage_routes';
 
+/**
+ * InputModule is a parent component for setting up
+ * user defined routes
+ * 
+ * It consists of two AddressInput components: start and end.
+ * Once both addresses and their respective geocodes are set,
+ * the Button to create the actual route will be enabled.
+ * 
+ * Button triggers usage of handleRouteCreation which will
+ * use createRoute to build data object that contains query-ready
+ * string for Apollo and necessary details for both start- and endpoints.
+ * Object will be added to localStorage using addLocalRoute-function and
+ * to global state management dispatching action type 'route_control/addRoute'
+ * After this the notification of successful addition will be triggered.
+ * Next the start- and endpoints are cleared from global state (because route is
+ * already in the route_control).
+ */
+
 export const InputModule = (props) => {
   const startAddress = useSelector(state => state.start);
   const endAddress = useSelector(state => state.end);
@@ -13,7 +31,6 @@ export const InputModule = (props) => {
 
   const handleRouteCreation = (event) => {
     const route = createRoute(startAddress.geocode, endAddress.geocode);
-    console.warn(route);
     addLocalRoute(route);
     dispatch({type: 'route_control/addRoute', route: route});
     dispatch({type: 'notification_control/setAlert', alert: {mode: 'success', message: 'Reitti luotu'}});

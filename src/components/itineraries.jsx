@@ -1,8 +1,9 @@
-import React, {} from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Typography from '@mui/material/Typography';
 
 import { Itinerary } from './itinerary';
+import { Transportmodes } from './transportmodes';
 
 const modes = Object.freeze({
   DEFAULT: 'default',
@@ -11,6 +12,7 @@ const modes = Object.freeze({
 
 export const Itineraries = (props) => {
   const {routes, defaultroute} = useSelector(state => state.route);
+
   return <section id={props.id} data-testid={props.id} >
     <article>
       <Typography variant='h6' >Oletusreitti</Typography>
