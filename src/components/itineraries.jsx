@@ -15,6 +15,9 @@ export const Itineraries = (props) => {
 
   return <section id={props.id} data-testid={props.id} >
     <article>
+      <Transportmodes id={`${props.id}.modeselector`} />
+    </article>
+    <article>
       <Typography variant='h6' >Oletusreitti</Typography>
       {defaultroute ? <Itinerary route={defaultroute} mode={modes.DEFAULT} /> : <p>Oletusreittiä ei ole asetettu</p>}
     </article>
