@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/RedFoxFinn/StopOver/compare/v0.5.2...v0.6.0) (2021-10-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* global state management usage with transportmodes, finalised transportmodes with
+functional & functioning logic, custom icons added
+
+### Features
+
+* +redux for transportmodes @ preferences-slice & handler function for selection & buttons ([9c4051e](https://github.com/RedFoxFinn/StopOver/commit/9c4051e7e8a6f6bea0b37f6fc70ec7b3164ecde4))
+
 ### [0.5.2](https://github.com/RedFoxFinn/StopOver/compare/v0.5.1...v0.5.2) (2021-10-07)
 
 
