@@ -76,15 +76,42 @@ export const Transportmodes = (props) => {
   return <section id={props.id} data-testid={props.id} >
     <Typography variant='h6'>Valitse kulkukeinot</Typography>
     <ToggleButtonGroup size='small' variant='outlined' orientation='vertical' onChange={handleMode} >
-      <ToggleButton selected={all} >Kaikki kulkukeinot <HslHrtIcon name='HSLIcon' height='1.5rem' /></ToggleButton>
-      <ToggleButton selected={bicycle} value='BICYCLE' >Pyörä <HslHrtIcon name='bicycleBoxedIcon' height='1.5rem' /></ToggleButton>
-      <ToggleButton selected={bus} value='BUS' >Bussi <HslHrtIcon name='busBoxedIcon' height='1.5rem' /></ToggleButton>
-      <ToggleButton selected={car} value='CAR' >Auto <HslHrtIcon name='carBoxedIcon' height='1.5rem' /></ToggleButton>
-      <ToggleButton selected={ferry} value='FERRY' >Lautta <HslHrtIcon name='ferryBoxedIcon' height='1.5rem' /></ToggleButton>
-      <ToggleButton selected={rail} value='RAIL' >Juna <HslHrtIcon name='trainBoxedIcon' height='1.5rem' /></ToggleButton>
-      <ToggleButton selected={subway} value='SUBWAY' >Metro <HslHrtIcon name='metroBoxedIcon' height='1.5rem' /></ToggleButton>
-      <ToggleButton selected={tram} value='TRAM' >Ratikka <HslHrtIcon name='tramBoxedIcon' height='1.5rem' /></ToggleButton>
-      <ToggleButton selected={walk} value='WALK' >Kävely <DirectionsWalkIcon sx={{fontSize: '1.5rem'}} /></ToggleButton>
+      <ToggleButton selected={all} value='ALL' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+        <HslHrtIcon name='HSLIcon' height='1.5rem' />
+        <Typography variant='body' sx={{marginLeft: '1rem'}}>Kaikki kulkukeinot</Typography>
+      </ToggleButton>
+      <ToggleButton selected={bicycle} value='BICYCLE' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+        <HslHrtIcon name='bicycleBoxedIcon' height='1.5rem' />
+        <Typography variant='body' sx={{marginLeft: '1rem'}}>Pyörä</Typography>
+      </ToggleButton>
+      <ToggleButton selected={bus} value='BUS' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+        <HslHrtIcon name='busBoxedIcon' height='1.5rem' />
+        <Typography variant='body' sx={{marginLeft: '1rem'}}>Bussi</Typography>
+      </ToggleButton>
+      <ToggleButton selected={car} value='CAR' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+        <HslHrtIcon name='carBoxedIcon' height='1.5rem' />
+        <Typography variant='body' sx={{marginLeft: '1rem'}}>Auto</Typography>
+      </ToggleButton>
+      <ToggleButton selected={ferry} value='FERRY' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+        <HslHrtIcon name='ferryBoxedIcon' height='1.5rem' />
+        <Typography variant='body' sx={{marginLeft: '1rem'}}>Lautta</Typography>
+      </ToggleButton>
+      <ToggleButton selected={rail} value='RAIL' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+        <HslHrtIcon name='trainBoxedIcon' height='1.5rem' />
+        <Typography variant='body' sx={{marginLeft: '1rem'}}>Juna</Typography>
+      </ToggleButton>
+      <ToggleButton selected={subway} value='SUBWAY' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+        <HslHrtIcon name='metroBoxedIcon' height='1.5rem' />
+        <Typography variant='body' sx={{marginLeft: '1rem'}}>Metro</Typography>
+      </ToggleButton>
+      <ToggleButton selected={tram} value='TRAM' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+        <HslHrtIcon name='tramBoxedIcon' height='1.5rem' />
+        <Typography variant='body' sx={{marginLeft: '1rem'}}>Ratikka</Typography>
+      </ToggleButton>
+      <ToggleButton selected={walk} value='WALK' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+        <DirectionsWalkIcon sx={{fontSize: '1.5rem'}} />
+        <Typography variant='body' sx={{marginLeft: '1rem'}}>Kävely</Typography>
+      </ToggleButton>
     </ToggleButtonGroup>
   </section>;
 };
