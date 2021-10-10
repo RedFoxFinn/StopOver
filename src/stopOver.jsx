@@ -25,13 +25,13 @@ export const StopOver = (props) => {
   const [routesSet, setRoutesSet] = useState(false);
 
   useEffect(() => {
-    const {street, number, municipality} = start();
+    const {street, number, municipality, name} = start();
     if (street && number && municipality) {
       ax.get(`${API_BASE_URL()}${NOMINATIM_API_ADDRESS_QUERY(street, number, municipality)}`)
         .then((response) => {
           const {data} = response;
           if (data.length > 0 && data[0]?.lat && data[0]?.address) {
-            setStartGC(data[0]);
+            setStartGC({name: name, location: data[0]});
           }
         })
         .catch((error) => {
@@ -40,13 +40,13 @@ export const StopOver = (props) => {
     }
   }, []);
   useEffect(() => {
-    const {street, number, municipality} = end();
+    const {street, number, municipality, name} = end();
     if (street && number && municipality) {
       ax.get(`${API_BASE_URL()}${NOMINATIM_API_ADDRESS_QUERY(street, number, municipality)}`)
         .then((response) => {
           const {data} = response;
           if (data.length > 0 && data[0]?.lat && data[0]?.address) {
-            setEndGC(data[0]);
+            setEndGC({name: name, location: data[0]});
           }
         })
         .catch((error) => {

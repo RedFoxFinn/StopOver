@@ -9,8 +9,8 @@ export const STOP_DETAILS = gql`
     gtfsId
     zoneId
     vehicleMode
-    stopTimesForPatterns(omitNonPickups: true, timeRange: 1800) {
-      stopTimes {
+    stoptimesForPatterns(omitNonPickups: true, timeRange: 1800) {
+      stoptimes {
         ...StoptimeDetails
       }
     }

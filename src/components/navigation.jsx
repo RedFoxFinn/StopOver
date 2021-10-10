@@ -11,7 +11,7 @@ import { GeocodeDisplayModule } from './geocodeDisplayModule';
 
 const Navigation = ({id}) => {
   return <nav id={id} data-testid={id} style={{display: 'inline-flex', alignItems: 'center'}} >
-    <ButtonGroup variant='outlined' size='small' sx={{margin: '1rem'}}>
+    <ButtonGroup variant='outlined' size='small' sx={{margin: '0.5rem'}}>
       <Button
         to='/'
         component={NavLink}

@@ -73,8 +73,8 @@ export const Transportmodes = (props) => {
     }
   }
 
-  return <section id={props.id} data-testid={props.id} >
-    <Typography variant='h6'>Valitse kulkukeinot</Typography>
+  return <section id={props.id} data-testid={props.id} style={{margin: '0.5rem'}} >
+    <Typography variant='h6' sx={{marginBottom: '0.5rem'}}>Valitse kulkukeinot</Typography>
     <ToggleButtonGroup size='small' variant='outlined' orientation='vertical' onChange={handleMode} >
       <ToggleButton selected={all} value='ALL' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
         <HslHrtIcon name='HSLIcon' height='1.5rem' />

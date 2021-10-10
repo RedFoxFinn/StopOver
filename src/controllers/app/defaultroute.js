@@ -7,11 +7,13 @@ export const start = () => {
   return {
     street: 'soittilanmäki',
     number: '6',
-    municipality: 'espoo'
+    municipality: 'espoo',
+    name: 'hotelli nuuksio'
   };
 };
 export const end = () => {
   return {
+    name: 'maria 01',
     street: 'lapinlahdenkatu',
     number: '16',
     municipality: 'helsinki'
