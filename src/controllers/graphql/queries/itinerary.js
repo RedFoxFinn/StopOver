@@ -12,7 +12,8 @@ export const ITINERARY = gql`
       $walkBoardCost: Int,
       $minTransferTime: Int,
       $date: String,
-      $time: String
+      $time: String,
+      $transportModes: [TransportMode]
   ) {
     plan(
       fromPlace: $fromPlace,
@@ -23,7 +24,8 @@ export const ITINERARY = gql`
       walkBoardCost: $walkBoardCost,
       minTransferTime: $minTransferTime,
       date: $date,
-      time: $time
+      time: $time,
+      transportModes: $transportModes
     ) {
       itineraries {
         ...ItineraryDetails

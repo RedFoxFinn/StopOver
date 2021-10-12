@@ -1,11 +1,42 @@
 
 import React, { useEffect } from 'react';
 import { useLazyQuery } from '@apollo/client';
+import { useSelector } from 'react-redux';
 
 import {ITINERARY} from '../controllers/graphql/queries/itinerary';
-import { STOP } from '../controllers/graphql/queries/stop';
+
+/**
+ * ADD NEXT: TRANSPORT MODES
+ */
 
 export const Itinerary = (props) => {
+  const {
+    all,
+    bus,
+    bicycle,
+    car,
+    ferry,
+    rail,
+    subway,
+    tram,
+    walk
+  } = useSelector(state => state.preferences);
+  function getModes() {
+    let modes = [];
+    if (all) {
+      return [];
+    } else {
+      bus && modes.push({mode: 'BUS'});
+      bicycle && modes.push({mode: 'BICYCLE'});
+      car && modes.push({mode: 'CAR'});
+      ferry && modes.push({mode: 'FERRY'});
+      rail && modes.push({mode: 'RAIL'});
+      subway && modes.push({mode: 'SUBWAY'});
+      tram && modes.push({mode: 'TRAM'});
+      walk && modes.push({mode: 'WALK'});
+      return modes.length > 0 ? modes : [];
+    }
+  }
   const {start, end} = props.route;
   const options = {
     query: ITINERARY,
@@ -13,7 +44,8 @@ export const Itinerary = (props) => {
       fromPlace: start.queryLocation,
       toPlace: end.queryLocation,
       numItineraries: 3,
-      minTransferTime: 2
+      minTransferTime: 2,
+      transportModes: getModes()
     },
     pollInterval: 30000
   };
