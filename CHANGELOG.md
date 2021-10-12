@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.4](https://github.com/RedFoxFinn/StopOver/compare/v0.6.3...v0.6.4) (2021-10-12)
+
+
+### Bug Fixes
+
+* fix on itinerary planning query: transportModes variable ([90dae40](https://github.com/RedFoxFinn/StopOver/commit/90dae400e689a7a4c1b5e270c22e8e524cdcaa25))
+
 ### [0.6.3](https://github.com/RedFoxFinn/StopOver/compare/v0.6.2...v0.6.3) (2021-10-10)
 
 
