@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.6](https://github.com/RedFoxFinn/StopOver/compare/v0.6.5...v0.6.6) (2021-10-12)
+
+
+### Bug Fixes
+
+* fixed issues with storing routes to localstorage, creating user routes & loading routes ([4220c38](https://github.com/RedFoxFinn/StopOver/commit/4220c3839976718baec8aa1d9b1ab4a26de00434))
+
 ### [0.6.5](https://github.com/RedFoxFinn/StopOver/compare/v0.6.4...v0.6.5) (2021-10-12)
 
 
