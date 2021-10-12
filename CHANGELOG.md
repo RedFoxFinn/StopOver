@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.5](https://github.com/RedFoxFinn/StopOver/compare/v0.6.4...v0.6.5) (2021-10-12)
+
+
+### Features
+
+* itinerary.jsx: rendering of route information added with transport mode for each leg ([8034828](https://github.com/RedFoxFinn/StopOver/commit/803482878a47fcc0d1c13cacfe229fb5f0a04e48))
+
 ### [0.6.4](https://github.com/RedFoxFinn/StopOver/compare/v0.6.3...v0.6.4) (2021-10-12)
 
 
