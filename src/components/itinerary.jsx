@@ -1,13 +1,78 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { useSelector } from 'react-redux';
 
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Timeline from '@mui/lab/Timeline';
+import TimelineItem from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineDot from '@mui/lab/TimelineDot';
+import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
+import PinDropOutlinedIcon from '@mui/icons-material/PinDropOutlined';
+
+import {HslHrtIcon} from '../icons/HslHrtIcon';
+
 import {ITINERARY} from '../controllers/graphql/queries/itinerary';
 
-/**
- * ADD NEXT: TRANSPORT MODES
+/* Details: the details of planned itinerary
+ * Error: shown if the loading resulted error(s)
+ * Loading: shown while query was initialized but not successful (yet)
+ * ILNI: Itinerary Loading Not Initialized, shown when component loading but not started querying of data
  */
+
+const Details = ({data, points}) => {
+  const {walkDistance, duration, legs} = data.plan.itineraries[0];
+  const Legs = () => {
+    return <Timeline>
+      {legs.map(leg => {
+        const legIndex = legs.indexOf(leg);
+        return <TimelineItem key={legIndex}>
+          <TimelineSeparator>
+            {leg.mode === 'WALK' && <TimelineDot variant='outlined' >
+              <DirectionsWalkIcon sx={{fontSize: '1.25rem'}} />
+            </TimelineDot>}
+            {leg.mode === 'BICYCLE' && <TimelineDot variant='outlined' >
+              <HslHrtIcon name='bicycleIcon' height='1.25rem' />
+            </TimelineDot>}
+            {leg.mode === 'BUS' && <TimelineDot variant='outlined' >
+              <HslHrtIcon name='busIcon' height='1.25rem' />
+            </TimelineDot>}
+            {leg.mode === 'CAR' && <TimelineDot variant='outlined' >
+              <HslHrtIcon name='carIcon' height='1.25rem' />
+            </TimelineDot>}
+            {leg.mode === 'TRAM' && <TimelineDot variant='outlined' >
+              <HslHrtIcon name='tramIcon' height='1.25rem' />
+            </TimelineDot>}
+            {leg.mode === 'RAIL' && <TimelineDot variant='outlined' >
+              <HslHrtIcon name='trainIcon' height='1.25rem' />
+            </TimelineDot>}
+            {leg.mode === 'SUBWAY' && <TimelineDot variant='outlined' >
+              <HslHrtIcon name='metroIcon' height='1.25rem' />
+            </TimelineDot>}
+            {leg.mode === 'FERRY' && <TimelineDot variant='outlined' >
+              <HslHrtIcon name='ferryIcon' height='1.25rem' />
+            </TimelineDot>}
+            {legIndex < legs.length-1 && <TimelineConnector />}
+          </TimelineSeparator>
+          <TimelineContent>{leg.mode}</TimelineContent>
+        </TimelineItem>;
+      })}
+    </Timeline>;
+  };
+
+  return <Box>
+    <Typography variant='subtitle1' >{points.start} - {points.end}</Typography>
+    {legs && <Legs/>}
+  </Box>;
+};
+
+const Error = () => <Typography variant='subtitle1' >Itinerary loading failed</Typography>;
+const Loading = () => <Typography variant='subtitle1' >Itinerary loading</Typography>;
+const ILNI = () => <Typography variant='subtitle1' >Itinerary loading not initialized</Typography>;
 
 export const Itinerary = (props) => {
   const {
@@ -43,25 +108,30 @@ export const Itinerary = (props) => {
     variables: {
       fromPlace: start.queryLocation,
       toPlace: end.queryLocation,
-      numItineraries: 3,
+      numItineraries: 1,
       minTransferTime: 2,
       transportModes: getModes()
     },
     pollInterval: 30000
   };
   const [loadItinerary, {called, data, error, loading}] = useLazyQuery(ITINERARY, options);
-  // const [loadStop, {called, data, error, loading}] = useLazyQuery(STOP, {variables: {id: 'HSL:1173434'}});
-
+  
   useEffect(() => {
     start && end && !called && loadItinerary();
-    data && console.warn(data);
-    error && console.warn(error);
   }, []);
+
+  function getPoint(point) {
+    if (point === 'start') {
+      return start.name ?? `${start.street} ${start.number}, ${start.municipality}`;
+    } else {
+      return end.name ?? `${end.street} ${end.number}, ${end.municipality}`;
+    }
+  }
   
   return <section id={props.id} data-testid={props.id} >
-    {called && loading && <p>Itinerary loading</p>}
-    {called && error && <p>Itinerary loading failed</p>}
-    {called && data && <p>Itinerary loaded</p>}
-    {!called && <p>Itinerary loading not initialized</p>}
+    {called && loading && <Loading/>}
+    {called && error && <Error/>}
+    {called && data && <Details data={data} points={{start: getPoint('start'), end: getPoint('end')}} />}
+    {!called && <ILNI/>}
   </section>;
 };

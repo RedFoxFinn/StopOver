@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import PedalBikeIcon from '@mui/icons-material/PedalBike';
-import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
-import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
-import DirectionsBoatIcon from '@mui/icons-material/DirectionsBoat';
-import TrainIcon from '@mui/icons-material/Train';
-import DirectionsSubwayIcon from '@mui/icons-material/DirectionsSubway';
-import TramIcon from '@mui/icons-material/Tram';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 import Typography from '@mui/material/Typography';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';

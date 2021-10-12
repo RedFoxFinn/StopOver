@@ -7,12 +7,14 @@ export function createRoute(start, end) {
     const endPoint = `${endName}::${end.location.lat},${end.location.lon}`;
     const sp = {
       queryLocation: startPoint,
+      name: start.name,
       street: start.location.address.road,
       number: start.location.address.house_number,
       municipality: start.location.address.city ?? start.location.address.town
     };
     const ep = {
       queryLocation: endPoint,
+      name: end.name,
       street: end.location.address.road,
       number: end.location.address.house_number,
       municipality: end.location.address.city ?? end.location.address.town

@@ -5,17 +5,17 @@
  */
 export const start = () => {
   return {
-    street: 'soittilanmäki',
+    street: 'Soittilanmäki',
     number: '6',
-    municipality: 'espoo',
-    name: 'hotelli nuuksio'
+    municipality: 'Espoo',
+    name: 'Hotelli Nuuksio'
   };
 };
 export const end = () => {
   return {
-    name: 'maria 01',
-    street: 'lapinlahdenkatu',
+    name: 'Maria 01',
+    street: 'Lapinlahdenkatu',
     number: '16',
-    municipality: 'helsinki'
+    municipality: 'Helsinki'
   };
 };
