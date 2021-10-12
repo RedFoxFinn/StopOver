@@ -31,7 +31,7 @@ export const StopOver = (props) => {
         .then((response) => {
           const {data} = response;
           if (data.length > 0 && data[0]?.lat && data[0]?.address) {
-            setStartGC({name: name, location: data[0]});
+            setStartGC({name: name, geocode: data[0]});
           }
         })
         .catch((error) => {
@@ -46,7 +46,7 @@ export const StopOver = (props) => {
         .then((response) => {
           const {data} = response;
           if (data.length > 0 && data[0]?.lat && data[0]?.address) {
-            setEndGC({name: name, location: data[0]});
+            setEndGC({name: name, geocode: data[0]});
           }
         })
         .catch((error) => {

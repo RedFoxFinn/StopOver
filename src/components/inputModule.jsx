@@ -30,7 +30,7 @@ export const InputModule = (props) => {
   const dispatch = useDispatch();
 
   const handleRouteCreation = (event) => {
-    const route = createRoute(startAddress.geocode, endAddress.geocode);
+    const route = createRoute(startAddress, endAddress);
     addLocalRoute(route);
     dispatch({type: 'route_control/addRoute', route: route});
     dispatch({type: 'notification_control/setAlert', alert: {mode: 'success', message: 'Reitti luotu'}});
@@ -39,10 +39,10 @@ export const InputModule = (props) => {
   };
 
   const checkStartGeocode = () => {
-    return startAddress.geocode !== null && startAddress.geocode.hasOwnProperty('lat');
+    return startAddress && startAddress.geocode !== null && startAddress.geocode.hasOwnProperty('lat');
   };
   const checkEndGeocode = () => {
-    return endAddress.geocode !== null && endAddress.geocode.hasOwnProperty('lat');
+    return endAddress && endAddress.geocode !== null && endAddress.geocode.hasOwnProperty('lat');
   };
 
   return <section id={props.id} data-testid={props.id} >

@@ -12,7 +12,6 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
-import PinDropOutlinedIcon from '@mui/icons-material/PinDropOutlined';
 
 import {HslHrtIcon} from '../icons/HslHrtIcon';
 
@@ -27,33 +26,33 @@ import {ITINERARY} from '../controllers/graphql/queries/itinerary';
 const Details = ({data, points}) => {
   const {walkDistance, duration, legs} = data.plan.itineraries[0];
   const Legs = () => {
-    return <Timeline>
+    return <Timeline sx={{display: 'flex', alignItems: 'start'}} >
       {legs.map(leg => {
         const legIndex = legs.indexOf(leg);
         return <TimelineItem key={legIndex}>
           <TimelineSeparator>
-            {leg.mode === 'WALK' && <TimelineDot variant='outlined' >
+            {leg.mode === 'WALK' && <TimelineDot variant='outlined' color='other' >
               <DirectionsWalkIcon sx={{fontSize: '1.25rem'}} />
             </TimelineDot>}
-            {leg.mode === 'BICYCLE' && <TimelineDot variant='outlined' >
+            {leg.mode === 'BICYCLE' && <TimelineDot variant='outlined' color='bicycle' >
               <HslHrtIcon name='bicycleIcon' height='1.25rem' />
             </TimelineDot>}
-            {leg.mode === 'BUS' && <TimelineDot variant='outlined' >
+            {leg.mode === 'BUS' && <TimelineDot variant='outlined' color='bus' >
               <HslHrtIcon name='busIcon' height='1.25rem' />
             </TimelineDot>}
-            {leg.mode === 'CAR' && <TimelineDot variant='outlined' >
+            {leg.mode === 'CAR' && <TimelineDot variant='outlined' color='other' >
               <HslHrtIcon name='carIcon' height='1.25rem' />
             </TimelineDot>}
-            {leg.mode === 'TRAM' && <TimelineDot variant='outlined' >
+            {leg.mode === 'TRAM' && <TimelineDot variant='outlined' color='tram' >
               <HslHrtIcon name='tramIcon' height='1.25rem' />
             </TimelineDot>}
-            {leg.mode === 'RAIL' && <TimelineDot variant='outlined' >
+            {leg.mode === 'RAIL' && <TimelineDot variant='outlined' color='train' >
               <HslHrtIcon name='trainIcon' height='1.25rem' />
             </TimelineDot>}
-            {leg.mode === 'SUBWAY' && <TimelineDot variant='outlined' >
+            {leg.mode === 'SUBWAY' && <TimelineDot variant='outlined' color='subway' >
               <HslHrtIcon name='metroIcon' height='1.25rem' />
             </TimelineDot>}
-            {leg.mode === 'FERRY' && <TimelineDot variant='outlined' >
+            {leg.mode === 'FERRY' && <TimelineDot variant='outlined' color='ferry' >
               <HslHrtIcon name='ferryIcon' height='1.25rem' />
             </TimelineDot>}
             {legIndex < legs.length-1 && <TimelineConnector />}
