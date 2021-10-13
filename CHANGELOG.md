@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.7](https://github.com/RedFoxFinn/StopOver/compare/v0.6.6...v0.6.7) (2021-10-13)
+
 ### [0.6.6](https://github.com/RedFoxFinn/StopOver/compare/v0.6.5...v0.6.6) (2021-10-12)
 
 
