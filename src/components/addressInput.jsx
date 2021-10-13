@@ -11,6 +11,12 @@ import Chip from '@mui/material/Chip';
 
 import { ax, API_BASE_URL, NOMINATIM_API_ADDRESS_QUERY } from '../controllers/app/api';
 
+/* NEXT:
+ * ADD 'NAME' to redux & form, optional but recommended,
+ * PURPOSE: Name for startpoint or endpoint if user desires to use customised location name instead of address
+ *          and to provide name for queryLocation -string building
+ */
+
 export const AddressInput = ({end = false, start = false, id = 'default'}) => {
   const addressState = end ? useSelector(state => state.end) : start ? useSelector(state => state.start) : null;
   const dispatch = useDispatch();

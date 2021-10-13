@@ -2,7 +2,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { isCompositeComponentWithType } from 'react-dom/test-utils';
+import { isCompositeComponentWithType, act } from 'react-dom/test-utils';
 import { Provider } from 'react-redux';
 
 import store from '../controllers/redux/store';
@@ -28,28 +28,44 @@ describe('addressInput - unit tests', () => {
   });
   it('AddressInput fields - start', () => {
     render(<Provider store={store}><AddressInput id='stopover.unit.test' start={true} end={false} /></Provider>);
+    let state = store.getState().start;
+    expect(state.street).toMatch('');
+    expect(state.number).toMatch('');
+    expect(state.municipality).toMatch('');
+    expect(state.geocode).toBe(null);
     const street = screen.getByLabelText('katu');
     expect(street).toBeTruthy();
     expect(street.value).toBe('');
-    userEvent.type(street, 'Mannerheimintie');
+    act(() => userEvent.type(street, 'Mannerheimintie'));
     expect(street.value).toBe('Mannerheimintie');
+    state = store.getState().start;
+    expect(state.street).toMatch('Mannerheimintie');
     const number = screen.getByLabelText('numero');
     expect(number).toBeTruthy();
     expect(number.value).toBe('');
-    userEvent.type(number, '1');
+    act(() => userEvent.type(number, '1'));
     expect(number.value).toBe('1');
+    state = store.getState().start;
+    expect(state.number).toMatch('1');
     const municipality = screen.getByLabelText('kunta');
     expect(municipality).toBeTruthy();
     expect(municipality.value).toBe('');
-    userEvent.type(municipality, 'Helsinki');
+    act(() => userEvent.type(municipality, 'Helsinki'));
     expect(municipality.value).toBe('Helsinki');
+    state = store.getState().start;
+    expect(state.municipality).toMatch('Helsinki');
     const set = screen.getByText('Aseta');
     expect(set).toBeTruthy();
-    userEvent.click(set);
+    act(() => userEvent.click(set));
     setTimeout(() => {
       expect(street.value).toBe('');
       expect(number.value).toBe('');
       expect(municipality.value).toBe('');
+      state = store.getState().start;
+      expect(state.street).toMatch('');
+      expect(state.number).toMatch('');
+      expect(state.municipality).toMatch('');
+      expect(state.geocode).not.toBe(null);
     }, 3500);
   });
   it('AddressInput renders - end', () => {
@@ -62,6 +78,48 @@ describe('addressInput - unit tests', () => {
     expect(component.textContent).toMatch('numero');
     expect(component.textContent).toMatch('kunta');
     expect(component.textContent).toMatch('Aseta');
+  });
+  it('AddressInput fields - end', () => {
+    render(<Provider store={store}><AddressInput id='stopover.unit.test' start={false} end={true} /></Provider>);
+    let state = store.getState().end;
+    expect(state.street).toMatch('');
+    expect(state.number).toMatch('');
+    expect(state.municipality).toMatch('');
+    expect(state.geocode).toBe(null);
+    const street = screen.getByLabelText('katu');
+    expect(street).toBeTruthy();
+    expect(street.value).toBe('');
+    act(() => userEvent.type(street, 'Mannerheimintie'));
+    expect(street.value).toBe('Mannerheimintie');
+    state = store.getState().end;
+    expect(state.street).toMatch('Mannerheimintie');
+    const number = screen.getByLabelText('numero');
+    expect(number).toBeTruthy();
+    expect(number.value).toBe('');
+    act(() => userEvent.type(number, '1'));
+    expect(number.value).toBe('1');
+    state = store.getState().end;
+    expect(state.number).toMatch('1');
+    const municipality = screen.getByLabelText('kunta');
+    expect(municipality).toBeTruthy();
+    expect(municipality.value).toBe('');
+    act(() => userEvent.type(municipality, 'Helsinki'));
+    expect(municipality.value).toBe('Helsinki');
+    state = store.getState().end;
+    expect(state.municipality).toMatch('Helsinki');
+    const set = screen.getByText('Aseta');
+    expect(set).toBeTruthy();
+    act(() => userEvent.click(set));
+    setTimeout(() => {
+      expect(street.value).toBe('');
+      expect(number.value).toBe('');
+      expect(municipality.value).toBe('');
+      state = store.getState().end;
+      expect(state.street).toMatch('');
+      expect(state.number).toMatch('');
+      expect(state.municipality).toMatch('');
+      expect(state.geocode).not.toBe(null);
+    }, 3500);
   });
   it('AddressInput renders - incorrectly set', () => {
     render(<Provider store={store}><AddressInput id='stopover.unit.test' start={false} end={false} /></Provider>);

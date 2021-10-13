@@ -8,7 +8,6 @@ import { Provider } from 'react-redux';
 
 import Navigation, { Routing } from './navigation';
 import store from '../controllers/redux/store';
-import { GeocodeDisplayModule } from './geocodeDisplayModule';
 import { InputModule } from './inputModule';
 import { Itineraries } from './itineraries';
 
@@ -71,16 +70,13 @@ describe('routing - integration tests', () => {
     expect(component).toBeTruthy();
     isCompositeComponentWithType(component, Itineraries);
   });
-  it('routing "/details" >> GeocodeDisplayModule', () => {
-    userEvent.click(screen.getByText('Pistetiedot'));
-    const component = screen.queryByTestId(`${baseid}.routing.geocode`);
-    expect(component).toBeTruthy();
-    isCompositeComponentWithType(component, GeocodeDisplayModule);
-  });
   it('routing "/planning" >> InputModule', () => {
     userEvent.click(screen.getByText('Reittisuunnittelu'));
     const component = screen.queryByTestId(`${baseid}.routing.planning`);
     expect(component).toBeTruthy();
     isCompositeComponentWithType(component, InputModule);
+  });
+  it('routing "/settings" >> Settings', () => {
+    expect(false).toBe(true);
   });
 });

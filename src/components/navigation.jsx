@@ -7,7 +7,6 @@ import { green } from '@mui/material/colors';
 
 import { Itineraries } from './itineraries';
 import { InputModule } from './inputModule';
-import { GeocodeDisplayModule } from './geocodeDisplayModule';
 
 const Navigation = ({id}) => {
   return <nav id={id} data-testid={id} style={{display: 'inline-flex', alignItems: 'center'}} >
@@ -17,13 +16,13 @@ const Navigation = ({id}) => {
         component={NavLink}
       >Reitit</Button>
       <Button
-        to='/details'
-        component={NavLink}
-      >Pistetiedot</Button>
-      <Button
         to='/planning'
         component={NavLink}
       >Reittisuunnittelu</Button>
+      <Button
+        to='/settings'
+        component={NavLink}
+      >Asetukset</Button>
     </ButtonGroup>
   </nav>;
 };
@@ -33,8 +32,8 @@ export const Routing = (props) => {
   return <section id={props.id} data-testid={props.id} >
     <Switch>
       <Route path='/planning' children={<InputModule id={`${props.id}.planning`} />} />
-      <Route path='/details' children={<GeocodeDisplayModule id={`${props.id}.geocode`} />}/>
       <Route exact path='/' children={<Itineraries id={`${props.id}.routes`} />}/>
+      <Route path='/settings' children={<p id={`${props.id}.settings`} >asetukset</p>}/>
     </Switch>
   </section>;
 };

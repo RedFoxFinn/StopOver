@@ -8,7 +8,7 @@ import ToggleButton from '@mui/material/ToggleButton';
 
 import { HslHrtIcon } from '../icons/HslHrtIcon';
 
-const modes = Object.freeze({
+/**const modes = Object.freeze({
   BICYCLE: {mode: 'BICYCLE'},
   BUS: {mode: 'BUS'},
   CAR: {mode: 'CAR'},
@@ -18,7 +18,7 @@ const modes = Object.freeze({
   TRAM: {mode: 'TRAM'},
   TRANSIT: {mode: 'TRANSIT'},
   WALK: {mode: 'WALK'}
-});
+}); */
 
 export const Transportmodes = (props) => {
   const dispatch = useDispatch();
@@ -69,39 +69,57 @@ export const Transportmodes = (props) => {
   return <section id={props.id} data-testid={props.id} style={{margin: '0.5rem'}} >
     <Typography variant='h6' sx={{marginBottom: '0.5rem'}}>Valitse kulkukeinot</Typography>
     <ToggleButtonGroup size='small' variant='outlined' orientation='vertical' onChange={handleMode} >
-      <ToggleButton selected={all} value='ALL' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+      <ToggleButton 
+        selected={all} value='ALL' sx={{alignItems: 'center', justifyContent: 'flex-start'}}
+        id={`${props.id}.all`} data-testid={`${props.id}.all`} >
         <HslHrtIcon name='HSLIcon' height='1.5rem' />
         <Typography variant='body' sx={{marginLeft: '1rem'}}>Kaikki kulkukeinot</Typography>
       </ToggleButton>
-      <ToggleButton selected={bicycle} value='BICYCLE' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+      <ToggleButton 
+        selected={bicycle} value='BICYCLE' sx={{alignItems: 'center', justifyContent: 'flex-start'}}
+        id={`${props.id}.bicycle`} data-testid={`${props.id}.bicycle`} >
         <HslHrtIcon name='bicycleBoxedIcon' height='1.5rem' />
         <Typography variant='body' sx={{marginLeft: '1rem'}}>Pyörä</Typography>
       </ToggleButton>
-      <ToggleButton selected={bus} value='BUS' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+      <ToggleButton 
+        selected={bus} value='BUS' sx={{alignItems: 'center', justifyContent: 'flex-start'}}
+        id={`${props.id}.bus`} data-testid={`${props.id}.bus`} >
         <HslHrtIcon name='busBoxedIcon' height='1.5rem' />
         <Typography variant='body' sx={{marginLeft: '1rem'}}>Bussi</Typography>
       </ToggleButton>
-      <ToggleButton selected={car} value='CAR' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+      <ToggleButton 
+        selected={car} value='CAR' sx={{alignItems: 'center', justifyContent: 'flex-start'}}
+        id={`${props.id}.car`} data-testid={`${props.id}.car`} >
         <HslHrtIcon name='carBoxedIcon' height='1.5rem' />
         <Typography variant='body' sx={{marginLeft: '1rem'}}>Auto</Typography>
       </ToggleButton>
-      <ToggleButton selected={ferry} value='FERRY' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+      <ToggleButton 
+        selected={ferry} value='FERRY' sx={{alignItems: 'center', justifyContent: 'flex-start'}}
+        id={`${props.id}.ferry`} data-testid={`${props.id}.ferry`} >
         <HslHrtIcon name='ferryBoxedIcon' height='1.5rem' />
         <Typography variant='body' sx={{marginLeft: '1rem'}}>Lautta</Typography>
       </ToggleButton>
-      <ToggleButton selected={rail} value='RAIL' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+      <ToggleButton 
+        selected={rail} value='RAIL' sx={{alignItems: 'center', justifyContent: 'flex-start'}}
+        id={`${props.id}.rail`} data-testid={`${props.id}.rail`} >
         <HslHrtIcon name='trainBoxedIcon' height='1.5rem' />
         <Typography variant='body' sx={{marginLeft: '1rem'}}>Juna</Typography>
       </ToggleButton>
-      <ToggleButton selected={subway} value='SUBWAY' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+      <ToggleButton 
+        selected={subway} value='SUBWAY' sx={{alignItems: 'center', justifyContent: 'flex-start'}}
+        id={`${props.id}.subway`} data-testid={`${props.id}.subway`} >
         <HslHrtIcon name='metroBoxedIcon' height='1.5rem' />
         <Typography variant='body' sx={{marginLeft: '1rem'}}>Metro</Typography>
       </ToggleButton>
-      <ToggleButton selected={tram} value='TRAM' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+      <ToggleButton 
+        selected={tram} value='TRAM' sx={{alignItems: 'center', justifyContent: 'flex-start'}}
+        id={`${props.id}.tram`} data-testid={`${props.id}.tram`} >
         <HslHrtIcon name='tramBoxedIcon' height='1.5rem' />
         <Typography variant='body' sx={{marginLeft: '1rem'}}>Ratikka</Typography>
       </ToggleButton>
-      <ToggleButton selected={walk} value='WALK' sx={{alignItems: 'center', justifyContent: 'flex-start'}}>
+      <ToggleButton 
+        selected={walk} value='WALK' sx={{alignItems: 'center', justifyContent: 'flex-start'}}
+        id={`${props.id}.walk`} data-testid={`${props.id}.walk`} >
         <DirectionsWalkIcon sx={{fontSize: '1.5rem'}} />
         <Typography variant='body' sx={{marginLeft: '1rem'}}>Kävely</Typography>
       </ToggleButton>
