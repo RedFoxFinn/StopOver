@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Typography from '@mui/material/Typography';
 
 import { Itinerary } from './itinerary';
 import { Transportmodes } from './transportmodes';
 
-const modes = Object.freeze({
+export const modes = Object.freeze({
   DEFAULT: 'default',
   USER: 'user'
 });

@@ -113,7 +113,7 @@ export const Itinerary = (props) => {
     },
     pollInterval: 30000
   };
-  const [loadItinerary, {called, data, error, loading}] = useLazyQuery(ITINERARY, options);
+  const [loadItinerary, { called, data, error, loading, refetch }] = useLazyQuery(ITINERARY, options);
   
   useEffect(() => {
     start && end && !called && loadItinerary();
