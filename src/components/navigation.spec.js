@@ -10,6 +10,7 @@ import Navigation, { Routing } from './navigation';
 import store from '../controllers/redux/store';
 import { InputModule } from './inputModule';
 import { Itineraries } from './itineraries';
+import { Settings } from './settings';
 
 describe('navigation - unit tests', () => {
   let dummy = false;
@@ -77,6 +78,9 @@ describe('routing - integration tests', () => {
     isCompositeComponentWithType(component, InputModule);
   });
   it('routing "/settings" >> Settings', () => {
-    expect(false).toBe(true);
+    userEvent.click(screen.getByText('Asetukset'));
+    const component = screen.queryByTestId(`${baseid}.routing.settings`);
+    expect(component).toBeTruthy();
+    isCompositeComponentWithType(component, Settings);
   });
 });

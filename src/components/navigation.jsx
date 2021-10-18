@@ -7,6 +7,7 @@ import { green } from '@mui/material/colors';
 
 import { Itineraries } from './itineraries';
 import { InputModule } from './inputModule';
+import { Settings } from './settings';
 
 const Navigation = ({id}) => {
   return <nav id={id} data-testid={id} style={{display: 'inline-flex', alignItems: 'center'}} >
@@ -33,7 +34,7 @@ export const Routing = (props) => {
     <Switch>
       <Route path='/planning' children={<InputModule id={`${props.id}.planning`} />} />
       <Route exact path='/' children={<Itineraries id={`${props.id}.routes`} />}/>
-      <Route path='/settings' children={<p id={`${props.id}.settings`} >asetukset</p>}/>
+      <Route path='/settings' children={<Settings id={`${props.id}.settings`} />}/>
     </Switch>
   </section>;
 };
