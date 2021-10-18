@@ -7,6 +7,10 @@ The frontend of the app. Without this one there wouldn't be graphical applicatio
 ![test/build/deploy](https://github.com/RedFoxFinn/StopOver/workflows/test\/build\/deploy/badge.svg)
 
 [![codecov](https://codecov.io/gh/RedFoxFinn/StopOver/branch/front/graph/badge.svg?token=R6GU7IO8S5)](https://codecov.io/gh/RedFoxFinn/StopOver)
+[![StopOver](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/count/vigydz/front&style=plastic&logo=cypress)](https://dashboard.cypress.io/projects/vigydz/runs)
+
+[![StopOver](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/vigydz/front&style=plastic&logo=cypress)](https://dashboard.cypress.io/projects/vigydz/runs)
+
 
 ## Libraries to highlight
 
