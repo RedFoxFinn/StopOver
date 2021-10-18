@@ -1,1 +1,9 @@
-{}
+{
+    "baseUrl": "http://localhost:3000",
+    "projectId": "vigydz",
+    "integrationFolder": "cypress/integration",
+    "retries": {
+        "runMode": 2,
+        "openMode": 1
+    }
+}
