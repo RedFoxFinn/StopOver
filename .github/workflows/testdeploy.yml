@@ -23,7 +23,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: test
-    if: needs.test.run_tests
+    if: |
+      always() && 
+      contains(needs.test.run_tests, 'success') &&
+      !contains(needs.test.run_tests, 'failure')
     steps:
     - uses: actions/checkout@v2
     - run: yarn install
