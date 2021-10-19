@@ -3,7 +3,7 @@
   "appname": "StopOver",
   "appid": "rff.app.stopover",
   "homepage": "https://redfoxfinn.github.io/StopOver/",
-  "version": "0.6.20",
+  "version": "0.6.21",
   "private": false,
   "dependencies": {
     "@apollo/client": "^3.4.13",
