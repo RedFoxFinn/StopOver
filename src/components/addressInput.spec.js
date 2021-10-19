@@ -66,7 +66,7 @@ describe('addressInput - unit tests', () => {
       expect(state.number).toMatch('');
       expect(state.municipality).toMatch('');
       expect(state.geocode).not.toBe(null);
-    }, 3500);
+    }, 1000);
   });
   it('AddressInput renders - end', () => {
     render(<Provider store={store}><AddressInput id='stopover.unit.test' start={false} end={true} /></Provider>);
@@ -119,7 +119,7 @@ describe('addressInput - unit tests', () => {
       expect(state.number).toMatch('');
       expect(state.municipality).toMatch('');
       expect(state.geocode).not.toBe(null);
-    }, 3500);
+    }, 1000);
   });
   it('AddressInput renders - incorrectly set', () => {
     render(<Provider store={store}><AddressInput id='stopover.unit.test' start={false} end={false} /></Provider>);

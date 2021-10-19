@@ -257,7 +257,7 @@ describe('transportmodes - unit tests', () => {
       expect(state_preferences.all).toBe(true);
       expect(state_preferences.bicycle).toBe(false);
       expect(state_preferences.bus).toBe(false);
-      expect(state_preferences.car).toBe(false);
+      expect(state_preferences.car).toBe(true);
       expect(state_preferences.ferry).toBe(false);
       expect(state_preferences.subway).toBe(false);
       expect(state_preferences.tram).toBe(false);

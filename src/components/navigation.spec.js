@@ -2,7 +2,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { isCompositeComponentWithType } from 'react-dom/test-utils';
+import { isCompositeComponentWithType, act } from 'react-dom/test-utils';
 import { MemoryRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
@@ -72,13 +72,13 @@ describe('routing - integration tests', () => {
     isCompositeComponentWithType(component, Itineraries);
   });
   it('routing "/planning" >> InputModule', () => {
-    userEvent.click(screen.getByText('Reittisuunnittelu'));
+    act(() => userEvent.click(screen.getByText('Reittisuunnittelu')));
     const component = screen.queryByTestId(`${baseid}.routing.planning`);
     expect(component).toBeTruthy();
     isCompositeComponentWithType(component, InputModule);
   });
   it('routing "/settings" >> Settings', () => {
-    userEvent.click(screen.getByText('Asetukset'));
+    act(() => userEvent.click(screen.getByText('Asetukset')));
     const component = screen.queryByTestId(`${baseid}.routing.settings`);
     expect(component).toBeTruthy();
     isCompositeComponentWithType(component, Settings);

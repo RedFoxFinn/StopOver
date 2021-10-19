@@ -84,7 +84,7 @@ describe('inputModule - integration tests', () => {
       expect(state.number).toMatch('');
       expect(state.municipality).toMatch('');
       expect(state.geocode).not.toBe(null);
-    }, 3500);
+    }, 1000);
   });
   it('AddressInput - end', () => {
     render(<Provider store={store}><InputModule id='stopover.integration.test' /></Provider>);
@@ -127,7 +127,7 @@ describe('inputModule - integration tests', () => {
       expect(state.number).toMatch('');
       expect(state.municipality).toMatch('');
       expect(state.geocode).not.toBe(null);
-    }, 3500);
+    }, 1000);
   });
   it('InputModule - generate-route', () => {
     render(<Provider store={store}><InputModule id='stopover.integration.test' /></Provider>);
@@ -173,7 +173,7 @@ describe('inputModule - integration tests', () => {
       expect(state_start.number).toMatch('');
       expect(state_start.municipality).toMatch('');
       expect(state_start.geocode).not.toBe(null);
-    }, 3500);
+    }, 1000);
     const end = screen.queryByTestId('stopover.integration.test.address-form-end');
     expect(end).toBeTruthy();
     isCompositeComponentWithType(end, AddressInput);
@@ -214,7 +214,7 @@ describe('inputModule - integration tests', () => {
       expect(state_end.number).toMatch('');
       expect(state_end.municipality).toMatch('');
       expect(state_end.geocode).not.toBe(null);
-    }, 3500);
+    }, 1000);
     const creator = screen.queryByTestId('stopover.integration.test.generate-route');
     expect(creator).toBeTruthy();
     isCompositeComponentWithType(creator, Button);
@@ -232,6 +232,6 @@ describe('inputModule - integration tests', () => {
       expect(state_end.geocode).toBe(null);
       state_routes = store.getState().route;
       expect(state_routes.routes.length).toBe(1);
-    }, 3500);
+    }, 1000);
   });
 });
