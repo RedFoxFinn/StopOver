@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.24](https://github.com/RedFoxFinn/StopOver/compare/v0.6.23...v0.6.24) (2021-10-20)
+
+
+### Bug Fixes
+
+* fixed isue with addressInput ([cd2915e](https://github.com/RedFoxFinn/StopOver/commit/cd2915e3b37149783c650f84e52904895253ddfb))
+
 ### [0.6.23](https://github.com/RedFoxFinn/StopOver/compare/v0.6.22...v0.6.23) (2021-10-20)
 
 
