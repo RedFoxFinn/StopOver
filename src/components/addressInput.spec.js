@@ -20,7 +20,7 @@ describe('addressInput - unit tests', () => {
     const component = screen.queryByTestId('stopover.unit.test');
     expect(component).toBeTruthy();
     isCompositeComponentWithType(component, AddressInput);
-    expect(component.textContent).toMatch('Lähtöpiste');
+    expect(component.textContent).toMatch('Aloituspiste');
     expect(component.textContent).toMatch('katu');
     expect(component.textContent).toMatch('numero');
     expect(component.textContent).toMatch('kunta');
@@ -67,13 +67,11 @@ describe('addressInput - unit tests', () => {
     expect(set).toBeTruthy();
     act(() => userEvent.click(set));
     setTimeout(() => {
-      expect(street.value).toBe('');
-      expect(number.value).toBe('');
-      expect(municipality.value).toBe('');
+      const module = screen.queryByTestId('stopover.unit.test');
+      expect(module).toBeTruthy();
+      isCompositeComponentWithType(module, AddressInput);
+      expect(module.textContent).toMatch('Aloituspiste asetettu');
       state = store.getState().start;
-      expect(state.street).toMatch('');
-      expect(state.number).toMatch('');
-      expect(state.municipality).toMatch('');
       expect(state.geocode).not.toBe(null);
     }, 1000);
   });
@@ -128,13 +126,11 @@ describe('addressInput - unit tests', () => {
     expect(set).toBeTruthy();
     act(() => userEvent.click(set));
     setTimeout(() => {
-      expect(street.value).toBe('');
-      expect(number.value).toBe('');
-      expect(municipality.value).toBe('');
+      const module = queryByTestId('stopover.unit.test');
+      expect(module).toBeTruthy();
+      isCompositeComponentWithType(module, AddressInput);
+      expect(module.textContent).toMatch('Päätepiste asetettu');
       state = store.getState().end;
-      expect(state.street).toMatch('');
-      expect(state.number).toMatch('');
-      expect(state.municipality).toMatch('');
       expect(state.geocode).not.toBe(null);
     }, 1000);
   });
