@@ -6,6 +6,7 @@ export const startSlice = createSlice({
     street: '',
     number: '',
     municipality: '',
+    name: '',
     geocode: null
   },
   reducers: {
@@ -18,10 +19,14 @@ export const startSlice = createSlice({
     setMunicipality: (state, action) => {
       state.municipality = action.municipality;
     },
+    setName: (state, action) => {
+      state.name = action.name;
+    },
     resetAddress: (state, action) => {
       state.street = '';
       state.number = '';
       state.municipality = '';
+      state.name = '';
     },
     setGeocode: (state, action) => {
       state.geocode = action.geocode;
@@ -30,11 +35,12 @@ export const startSlice = createSlice({
       state.street = '';
       state.number = '';
       state.municipality = '';
+      state.name = '';
       state.geocode = null;
     }
   }
 });
 
-export const { setStreet, setNumber, setMunicipality, setGeocode, resetAddress, resetStart } = startSlice.actions;
+export const { setStreet, setNumber, setMunicipality, setName, setGeocode, resetAddress, resetStart } = startSlice.actions;
 
 export default startSlice.reducer;

@@ -24,6 +24,7 @@ describe('addressInput - unit tests', () => {
     expect(component.textContent).toMatch('katu');
     expect(component.textContent).toMatch('numero');
     expect(component.textContent).toMatch('kunta');
+    expect(component.textContent).toMatch('nimi');
     expect(component.textContent).toMatch('Aseta');
   });
   it('AddressInput fields - start', () => {
@@ -32,6 +33,7 @@ describe('addressInput - unit tests', () => {
     expect(state.street).toMatch('');
     expect(state.number).toMatch('');
     expect(state.municipality).toMatch('');
+    expect(state.name).toMatch('');
     expect(state.geocode).toBe(null);
     const street = screen.getByLabelText('katu');
     expect(street).toBeTruthy();
@@ -54,6 +56,13 @@ describe('addressInput - unit tests', () => {
     expect(municipality.value).toBe('Helsinki');
     state = store.getState().start;
     expect(state.municipality).toMatch('Helsinki');
+    const name = screen.getByLabelText('nimi');
+    expect(name).toBeTruthy();
+    expect(name.value).toBe('');
+    act(() => userEvent.type(name, 'Mansku 1'));
+    expect(name.value).toBe('Mansku 1');
+    state = store.getState().start;
+    expect(state.name).toMatch('Mansku 1');
     const set = screen.getByText('Aseta');
     expect(set).toBeTruthy();
     act(() => userEvent.click(set));
@@ -77,6 +86,7 @@ describe('addressInput - unit tests', () => {
     expect(component.textContent).toMatch('katu');
     expect(component.textContent).toMatch('numero');
     expect(component.textContent).toMatch('kunta');
+    expect(component.textContent).toMatch('nimi');
     expect(component.textContent).toMatch('Aseta');
   });
   it('AddressInput fields - end', () => {
@@ -107,6 +117,13 @@ describe('addressInput - unit tests', () => {
     expect(municipality.value).toBe('Helsinki');
     state = store.getState().end;
     expect(state.municipality).toMatch('Helsinki');
+    const name = screen.getByLabelText('nimi');
+    expect(name).toBeTruthy();
+    expect(name.value).toBe('');
+    act(() => userEvent.type(name, 'Mansku 1'));
+    expect(name.value).toBe('Mansku 1');
+    state = store.getState().end;
+    expect(state.name).toMatch('Mansku 1');
     const set = screen.getByText('Aseta');
     expect(set).toBeTruthy();
     act(() => userEvent.click(set));

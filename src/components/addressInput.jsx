@@ -11,12 +11,6 @@ import Chip from '@mui/material/Chip';
 
 import { ax, API_BASE_URL, NOMINATIM_API_ADDRESS_QUERY } from '../controllers/app/api';
 
-/* NEXT:
- * ADD 'NAME' to redux & form, optional but recommended,
- * PURPOSE: Name for startpoint or endpoint if user desires to use customised location name instead of address
- *          and to provide name for queryLocation -string building
- */
-
 export const AddressInput = ({end = false, start = false, id = 'default'}) => {
   const addressState = end ? useSelector(state => state.end) : start ? useSelector(state => state.start) : null;
   const dispatch = useDispatch();
@@ -76,6 +70,13 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
         ? dispatch({type: 'location_start/setMunicipality', municipality: event.target.value})
         : console.log('input not set to either end or start');
   };
+  const handleName = (event) => {
+    end
+      ? dispatch({type: 'location_end/setName', name: event.target.value})
+      : start
+        ? dispatch({type: 'location_start/setName', name: event.target.value})
+        : console.log('input not set to either end or start');
+  };
 
   return !end && !start
     ? <Card
@@ -129,6 +130,7 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
         InputLabelProps={{shrink: true}}
         label='katu' defaultValue=''
         size='small' onChange={handleStreet}
+        sx={{maxWidth: 200}}
         color='primary' />
       <TextField
         id={`${id}-number`}
@@ -146,6 +148,16 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
         InputLabelProps={{shrink: true}}
         label='kunta' defaultValue=''
         size='small' onChange={handleMunicipality}
+        sx={{maxWidth: 160}}
+        color='primary' />
+      <TextField
+        id={`${id}-name`}
+        data-testid={`${id}-name`}
+        key={`${id}-name`}
+        InputLabelProps={{shrink: true}}
+        label='nimi' defaultValue=''
+        size='small' onChange={handleName}
+        sx={{maxWidth: 160}}
         color='primary' />
       <Button
         id={`${id}-query`}
