@@ -86,6 +86,10 @@ export const Itinerary = (props) => {
     walk
   } = useSelector(state => state.preferences);
   function getModes() {
+    /*
+    DISABLED POSSIBILITY TO USE TRANSPORTMODE SELECTOR SET MODES IN QUERIES DUE
+    ISSUE THAT'LL CRASH WHOLE APPLICATION ON MODE SELECTOR STATE CHANGE
+
     let modes = [];
     if (all) {
       return [];
@@ -100,6 +104,8 @@ export const Itinerary = (props) => {
       walk && modes.push({mode: 'WALK'});
       return modes.length > 0 ? modes : [];
     }
+    */
+    return [];
   }
   const {start, end} = props.route;
   const options = {
