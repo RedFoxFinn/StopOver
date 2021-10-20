@@ -2,7 +2,7 @@ import React, {  } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
 
-import { AddressInput } from './addressInput';
+import { AddressInput, StartSet, EndSet } from './addressInput';
 import { createRoute } from '../controllers/app/routecreator';
 import { addLocalRoute } from '../controllers/app/localstorage_routes';
 
@@ -46,8 +46,8 @@ export const InputModule = (props) => {
   };
 
   return <section id={props.id} data-testid={props.id} >
-    <AddressInput id={`${props.id}.address-form-start`} end={false} start={true} />
-    <AddressInput id={`${props.id}.address-form-end`} end={true} start={false} />
+    {checkStartGeocode() ? <StartSet id={`${props.id}.address-form-start`}/> : <AddressInput id={`${props.id}.address-form-start`} end={false} start={true} />}
+    {checkEndGeocode() ? <EndSet id={`${props.id}.address-form-end`}/> : <AddressInput id={`${props.id}.address-form-end`} end={true} start={false} />}
     {process.env.NODE_ENV !== 'production' && <AddressInput />}
     <Button
       id={`${props.id}.generate-route`}

@@ -11,6 +11,60 @@ import Chip from '@mui/material/Chip';
 
 import { ax, API_BASE_URL, NOMINATIM_API_ADDRESS_QUERY } from '../controllers/app/api';
 
+const Failure = ({id}) => <Card
+  id={id}
+  data-testid={id}
+  key={id}
+  variant='outlined'
+  sx={{
+    '& > :not(style)': { m: 1 },
+    minWidth: 300,
+    maxWidth: 800,
+    marginBottom: 2,
+    backgroundColor: 'rgba(0,0,0,0.05)'
+  }}
+>
+  <Divider>
+    <Chip icon={<ErrorOutlineIcon/>} label='Virheelliset määritykset' color='error' variant='outlined' />
+  </Divider>
+</Card>;
+
+export const StartSet = ({id}) => <Card
+  id={id}
+  data-testid={id}
+  key={id}
+  variant='outlined'
+  sx={{
+    '& > :not(style)': { m: 1 },
+    minWidth: 300,
+    maxWidth: 800,
+    marginBottom: 2,
+    backgroundColor: 'rgba(0,0,0,0.05)'
+  }}
+>
+  <Divider>
+    <Chip icon={<ErrorOutlineIcon/>} label='Aloituspiste asetettu' color='success' variant='outlined' />
+  </Divider>
+</Card>;
+
+export const EndSet = ({id}) => <Card
+  id={id}
+  data-testid={id}
+  key={id}
+  variant='outlined'
+  sx={{
+    '& > :not(style)': { m: 1 },
+    minWidth: 300,
+    maxWidth: 800,
+    marginBottom: 2,
+    backgroundColor: 'rgba(0,0,0,0.05)'
+  }}
+>
+  <Divider>
+    <Chip icon={<ErrorOutlineIcon/>} label='Päätepiste asetettu' color='success' variant='outlined' />
+  </Divider>
+</Card>;
+
 export const AddressInput = ({end = false, start = false, id = 'default'}) => {
   const addressState_end = useSelector(state => state.end);
   const addressState_start = useSelector(state => state.start);
@@ -70,197 +124,72 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
         : console.log('input not set to either end or start');
   };
 
-  const Failure = () => <Card
-    id={id}
-    data-testid={id}
-    key={id}
-    variant='outlined'
-    sx={{
-      '& > :not(style)': { m: 1 },
-      minWidth: 300,
-      maxWidth: 800,
-      marginBottom: 2,
-      backgroundColor: 'rgba(0,0,0,0.05)'
-    }}
-  >
-    <Divider>
-      <Chip icon={<ErrorOutlineIcon/>} label='Virheelliset määritykset' color='error' variant='outlined' />
-    </Divider>
-  </Card>;
-
-  const Start = () => <Card
-    id={id}
-    data-testid={id}
-    key={id}
-    component='form'
-    variant='outlined'
-    sx={{
-      '& > :not(style)': { m: 1 },
-      minWidth: 300,
-      maxWidth: 800,
-      marginBottom: 2,
-      backgroundColor: 'rgba(0,0,0,0.05)'
-    }}
-    noValidate
-    autoComplete="off"
-    key={id}
-    id={id}
-  >
-    <Divider>
-      <Chip icon={<PinDropIcon/>} label='Aloituspiste' color='info' variant='outlined' />
-    </Divider>
-    <TextField
-      id={`${id}-street`}
-      data-testid={`${id}-street`}
-      key={`${id}-street`}
-      InputLabelProps={{shrink: true}}
-      label='katu' defaultValue=''
-      size='small' onChange={handleStreet}
-      sx={{maxWidth: 200}}
-      color='primary' />
-    <TextField
-      id={`${id}-number`}
-      data-testid={`${id}-number`}
-      key={`${id}-number`}
-      InputLabelProps={{shrink: true}}
-      label='numero' defaultValue=''
-      size='small' onChange={handleNumber}
-      sx={{maxWidth: 80}}
-      color='primary' />
-    <TextField
-      id={`${id}-municipality`}
-      data-testid={`${id}-municipality`}
-      key={`${id}-municipality`}
-      InputLabelProps={{shrink: true}}
-      label='kunta' defaultValue=''
-      size='small' onChange={handleMunicipality}
-      sx={{maxWidth: 160}}
-      color='primary' />
-    <TextField
-      id={`${id}-name`}
-      data-testid={`${id}-name`}
-      key={`${id}-name`}
-      InputLabelProps={{shrink: true}}
-      label='nimi' defaultValue=''
-      size='small' onChange={handleName}
-      sx={{maxWidth: 160}}
-      color='primary' />
-    <Button
-      id={`${id}-query`}
-      data-testid={`${id}-query`}
-      key={`${id}-query`}
-      variant='outlined'
-      size='medium'
-      color='secondary'
-      onClick={fetchGeocode}>Aseta</Button>
-  </Card>;
-
-  const End = () => <Card
-    id={id}
-    data-testid={id}
-    key={id}
-    component='form'
-    variant='outlined'
-    sx={{
-      '& > :not(style)': { m: 1 },
-      minWidth: 300,
-      maxWidth: 800,
-      marginBottom: 2,
-      backgroundColor: 'rgba(0,0,0,0.05)'
-    }}
-    noValidate
-    autoComplete="off"
-    key={id}
-    id={id}
-  >
-    <Divider>
-      <Chip icon={<PinDropIcon/>} label='Päätepiste' color='info' variant='outlined' />
-    </Divider>
-    <TextField
-      id={`${id}-street`}
-      data-testid={`${id}-street`}
-      key={`${id}-street`}
-      InputLabelProps={{shrink: true}}
-      label='katu' defaultValue=''
-      size='small' onChange={handleStreet}
-      sx={{maxWidth: 200}}
-      color='primary' />
-    <TextField
-      id={`${id}-number`}
-      data-testid={`${id}-number`}
-      key={`${id}-number`}
-      InputLabelProps={{shrink: true}}
-      label='numero' defaultValue=''
-      size='small' onChange={handleNumber}
-      sx={{maxWidth: 80}}
-      color='primary' />
-    <TextField
-      id={`${id}-municipality`}
-      data-testid={`${id}-municipality`}
-      key={`${id}-municipality`}
-      InputLabelProps={{shrink: true}}
-      label='kunta' defaultValue=''
-      size='small' onChange={handleMunicipality}
-      sx={{maxWidth: 160}}
-      color='primary' />
-    <TextField
-      id={`${id}-name`}
-      data-testid={`${id}-name`}
-      key={`${id}-name`}
-      InputLabelProps={{shrink: true}}
-      label='nimi' defaultValue=''
-      size='small' onChange={handleName}
-      sx={{maxWidth: 160}}
-      color='primary' />
-    <Button
-      id={`${id}-query`}
-      data-testid={`${id}-query`}
-      key={`${id}-query`}
-      variant='outlined'
-      size='medium'
-      color='secondary'
-      onClick={fetchGeocode}>Aseta</Button>
-  </Card>;
-
-  const StartSet = () => <Card
-    id={id}
-    data-testid={id}
-    key={id}
-    variant='outlined'
-    sx={{
-      '& > :not(style)': { m: 1 },
-      minWidth: 300,
-      maxWidth: 800,
-      marginBottom: 2,
-      backgroundColor: 'rgba(0,0,0,0.05)'
-    }}
-  >
-    <Divider>
-      <Chip icon={<ErrorOutlineIcon/>} label='Aloituspiste asetettu' color='success' variant='outlined' />
-    </Divider>
-  </Card>;
-
-  const EndSet = () => <Card
-    id={id}
-    data-testid={id}
-    key={id}
-    variant='outlined'
-    sx={{
-      '& > :not(style)': { m: 1 },
-      minWidth: 300,
-      maxWidth: 800,
-      marginBottom: 2,
-      backgroundColor: 'rgba(0,0,0,0.05)'
-    }}
-  >
-    <Divider>
-      <Chip icon={<ErrorOutlineIcon/>} label='Päätepiste asetettu' color='success' variant='outlined' />
-    </Divider>
-  </Card>;
-
   return !end && !start
-    ? <Failure/>
-    : start
-      ? addressState_start.geocode === null ? <Start/> : <StartSet/>
-      : addressState_end.geocode === null ? <End/> : <EndSet/>;
+    ? <Failure id={id} />
+    : <Card
+      id={id}
+      data-testid={id}
+      key={id}
+      component='form'
+      variant='outlined'
+      sx={{
+        '& > :not(style)': { m: 1 },
+        minWidth: 300,
+        maxWidth: 800,
+        marginBottom: 2,
+        backgroundColor: 'rgba(0,0,0,0.05)'
+      }}
+      noValidate
+      autoComplete="off"
+      key={id}
+      id={id}
+    >
+      <Divider>
+        <Chip icon={<PinDropIcon/>} label={start ? 'Aloituspiste' : 'Päätepiste'} color='info' variant='outlined' />
+      </Divider>
+      <TextField
+        id={`${id}-street`}
+        data-testid={`${id}-street`}
+        key={`${id}-street`}
+        InputLabelProps={{shrink: true}}
+        label='katu' defaultValue=''
+        size='small' onChange={handleStreet}
+        sx={{maxWidth: 200}}
+        color='primary' />
+      <TextField
+        id={`${id}-number`}
+        data-testid={`${id}-number`}
+        key={`${id}-number`}
+        InputLabelProps={{shrink: true}}
+        label='numero' defaultValue=''
+        size='small' onChange={handleNumber}
+        sx={{maxWidth: 80}}
+        color='primary' />
+      <TextField
+        id={`${id}-municipality`}
+        data-testid={`${id}-municipality`}
+        key={`${id}-municipality`}
+        InputLabelProps={{shrink: true}}
+        label='kunta' defaultValue=''
+        size='small' onChange={handleMunicipality}
+        sx={{maxWidth: 160}}
+        color='primary' />
+      <TextField
+        id={`${id}-name`}
+        data-testid={`${id}-name`}
+        key={`${id}-name`}
+        InputLabelProps={{shrink: true}}
+        label='nimi' defaultValue=''
+        size='small' onChange={handleName}
+        sx={{maxWidth: 160}}
+        color='primary' />
+      <Button
+        id={`${id}-query`}
+        data-testid={`${id}-query`}
+        key={`${id}-query`}
+        variant='outlined'
+        size='medium'
+        color='secondary'
+        onClick={fetchGeocode}>Aseta</Button>
+    </Card>;
 };
