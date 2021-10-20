@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.22](https://github.com/RedFoxFinn/StopOver/compare/v0.6.21...v0.6.22) (2021-10-20)
+
+
+### Features
+
+* added field 'name' ('nimi') to addressInput & propriate state modifications ([28d7cdb](https://github.com/RedFoxFinn/StopOver/commit/28d7cdbb96b2553bb5d85ea46a90dedb24322ef9))
+
 ### [0.6.21](https://github.com/RedFoxFinn/StopOver/compare/v0.6.20...v0.6.21) (2021-10-19)
 
 ### [0.6.20](https://github.com/RedFoxFinn/StopOver/compare/v0.6.19...v0.6.20) (2021-10-19)
