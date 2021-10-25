@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.1](https://github.com/RedFoxFinn/StopOver/compare/v0.7.0...v0.7.1) (2021-10-25)
+
+
+### Features
+
+* additional feat: localStorage persistent setting for default route usage ([4ed7a44](https://github.com/RedFoxFinn/StopOver/commit/4ed7a4456c3dcee6c94958a5bd120f04a92eb94a))
+
 ## [0.7.0](https://github.com/RedFoxFinn/StopOver/compare/v0.6.25...v0.7.0) (2021-10-25)
 
 
