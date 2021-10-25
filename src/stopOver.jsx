@@ -13,6 +13,7 @@ import Navigation, {Routing} from './components/navigation';
 import { getRoutes } from './controllers/app/localstorage_routes';
 import { start, end } from './controllers/app/defaultroute';
 import { createRoute } from './controllers/app/routecreator';
+import { getUseDefaultRoute, setUseDefaultRoute } from './controllers/app/localstorage_settings';
 
 import { ax, API_BASE_URL, NOMINATIM_API_ADDRESS_QUERY } from './controllers/app/api';
 
@@ -24,6 +25,11 @@ export const StopOver = (props) => {
   const [defaultSet, setDefaultSet] = useState(false);
   const [routesSet, setRoutesSet] = useState(false);
 
+  useEffect(() => {
+    getUseDefaultRoute()
+      ? dispatch({type: 'preferences/disableDefaultRoute'})
+      : dispatch({type: 'preferences/enableDefaultRoute'});
+  }, []);
   useEffect(() => {
     const {street, number, municipality, name} = start();
     if (street && number && municipality) {
