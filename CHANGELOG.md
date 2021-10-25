@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/RedFoxFinn/StopOver/compare/v0.6.25...v0.7.0) (2021-10-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* IDs, settings functionality, conditionals for renderings
+
+### Features
+
+* +feature: settings enable/disable default route ([c305a2d](https://github.com/RedFoxFinn/StopOver/commit/c305a2d73c258c7a2ec3c351207c516e29020585))
+
 ### [0.6.25](https://github.com/RedFoxFinn/StopOver/compare/v0.6.24...v0.6.25) (2021-10-20)
 
 ### [0.6.24](https://github.com/RedFoxFinn/StopOver/compare/v0.6.23...v0.6.24) (2021-10-20)
