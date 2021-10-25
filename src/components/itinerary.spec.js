@@ -59,51 +59,8 @@ describe('itinerary - unit tests', () => {
     expect(component).toBeTruthy();
     isCompositeComponentWithType(component, Itinerary);
   });
-});
-
-describe('itinerary - integration tests', () => {
-  let startGC;
-  let endGC;
-  let route;
-  let dummy = false;
-  beforeAll(async () => {
-    const startPoint = start();
-    const endPoint = end();
-    if (startPoint.street && startPoint.number && startPoint.municipality && startPoint.name &&
-      endPoint.street && endPoint.number && endPoint.municipality && endPoint.name) {
-      await ax.get(`${API_BASE_URL()}${NOMINATIM_API_ADDRESS_QUERY(startPoint.street, startPoint.number, startPoint.municipality)}`)
-        .then((response) => {
-          const {data} = response;
-          if (data.length > 0 && data[0]?.lat && data[0]?.address) {
-            startGC = {name: startPoint.name, geocode: data[0]};
-          }
-        })
-        .catch((error) => {
-          console.warn(error.message);
-        }).then(async () => await ax.get(`${API_BASE_URL()}${NOMINATIM_API_ADDRESS_QUERY(endPoint.street, endPoint.number, endPoint.municipality)}`)
-          .then((response) => {
-            const {data} = response;
-            if (data.length > 0 && data[0]?.lat && data[0]?.address) {
-              endGC = {name: endPoint.name, geocode: data[0]};
-            }
-          })
-          .catch((error) => {
-            console.warn(error.message);
-          })).finally(() => route = startGC && endGC ? createRoute(startGC, endGC) : null);
-    } else {
-      route = null;
-    }
-  });
-  beforeEach(() => render(<Provider store={store}><ApolloProvider client={client} >
-    <Itinerary id='stopover.integration.test' route={route} mode={modes.DEFAULT} />
-  </ApolloProvider></Provider>));
-  it('dummy', () => {
-    expect(dummy).toBe(false);
-    dummy = true;
-    expect(dummy).toBe(true);
-  });
   it('default route', () => {
-    const component = screen.queryByTestId('stopover.integration.test');
+    const component = screen.queryByTestId('stopover.unit.test');
     expect(component).toBeTruthy();
     isCompositeComponentWithType(component, Itinerary);
     expect(component.textContent).toMatch('Itinerary loading');
