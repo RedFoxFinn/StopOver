@@ -9,19 +9,17 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import SettingsInputCompositeOutlinedIcon from '@mui/icons-material/SettingsInputCompositeOutlined';
 
-import { getUseDefaultRoute, setUseDefaultRoute } from '../controllers/app/localstorage_settings';
+import { setUseDefaultRoute } from '../controllers/app/localstorage_settings';
 
 export const Settings = ({id}) => {
   const dispatch = useDispatch();
   const { useDefaultRoute } = useSelector(state => state.preferences);
 
   const handleDefaultRoute = (event) => {
-    if (useDefaultRoute) {
-      dispatch({type: 'preferences/disableDefaultRoute'});
-    } else {
-      dispatch({type: 'preferences/enableDefaultRoute'});
-    }
     setUseDefaultRoute(!useDefaultRoute);
+    useDefaultRoute
+      ? dispatch({type: 'preferences/disableDefaultRoute'})
+      : dispatch({type: 'preferences/enableDefaultRoute'});
   };
 
   const Selector = () => {

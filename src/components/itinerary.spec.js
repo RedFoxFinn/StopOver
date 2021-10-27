@@ -72,6 +72,16 @@ describe('itinerary - unit tests', () => {
       expect(component.textContent).toMatch('01');
       expect(component.textContent).toMatch('Maria 01');
       expect(component.textContent).toMatch('Hotelli Nuuksio - Maria 01');
+      expect(component.textContent).toMatch('Lähtöaika:');
+      expect(component.textContent).toMatch('Saapumisaika:');
+      expect(component.textContent).toMatch('Kävelyä:');
+      expect(component.textContent).toMatch('Matkan pituus:');
+      expect(component.textContent).toMatch('Matka-aika:');
+      expect(component.textContent).toMatch('Pysäkki:');
+      expect(component.textContent).toMatch('Pysäkkitunnus:');
+      expect(component.textContent).toMatch('Linja:');
+      expect(component.textContent).toMatch('Asema:');
+      expect(component.textContent).toMatch('Laituri:');
       expect(component.textContent).toMatch('WALK');
       expect(component.textContent).toMatch('BUS');
     }, 1500);

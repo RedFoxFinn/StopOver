@@ -7,7 +7,24 @@ export const LEG_DETAILS = gql`
     mode
     startTime
     endTime
+    duration
+    distance
+    trip {
+      tripHeadsign
+      route {
+        shortName
+        longName
+      }
+    }
     from {
+      lat
+      lon
+      name
+      stop {
+        ...StopDetails
+      }
+    }
+    to {
       lat
       lon
       name
