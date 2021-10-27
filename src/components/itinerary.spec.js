@@ -80,8 +80,6 @@ describe('itinerary - unit tests', () => {
       expect(component.textContent).toMatch('Pysäkki:');
       expect(component.textContent).toMatch('Pysäkkitunnus:');
       expect(component.textContent).toMatch('Linja:');
-      expect(component.textContent).toMatch('Asema:');
-      expect(component.textContent).toMatch('Laituri:');
       expect(component.textContent).toMatch('WALK');
       expect(component.textContent).toMatch('BUS');
     }, 1500);

@@ -16,6 +16,7 @@ import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 
 import {HslHrtIcon} from '../icons/HslHrtIcon';
 
+import { sanitiseDatetime, sanitiseDistance, sanitiseSeconds } from '../controllers/app/sanitisers';
 import {ITINERARY} from '../controllers/graphql/queries/itinerary';
 
 /* Details: the details of planned itinerary
@@ -24,65 +25,8 @@ import {ITINERARY} from '../controllers/graphql/queries/itinerary';
  * ILNI: Itinerary Loading Not Initialized, shown when component loading but not started querying of data
  */
 
-function sanitiseSeconds(seconds) {
-  const m = Math.floor(seconds/60);
-  const s = seconds-(m*60);
-  return m >= 60 ? `~${Math.floor(m/60)}h ${m%60}min` : s >= 30 ? `~${m+1}min` : `~${m}min`;
-}
-
-function convertSeconds(time) {
-  const m = Math.floor(time/60);
-  const s = time-(m*60);
-  return {min: m, s: s};
-}
-
-function sanitiseDistance(distance) {
-  const meters = Math.floor(distance);
-  return meters >= 1000 ? `${Math.round((meters/1000 + Number.EPSILON)*100)/100}km` : `${meters}m`;
-}
-
-function convertDatetime(milliseconds) {
-  const datetime = new Date(Date(milliseconds));
-  const conversion = {
-    y: datetime.getFullYear(),
-    m: datetime.getMonth()+1,
-    d: datetime.getDate(),
-    h: datetime.getHours(),
-    min: datetime.getMinutes(),
-    s: datetime.getSeconds()
-  };
-  return conversion;
-}
-
-function sanitiseTime(time) {
-  const hours = time.h < 10 ? `0${time.h}` : time.h;
-  const minutes = time.min < 10 ? `0${time.min}` : time.min;
-  return `${hours}:${minutes}`;
-}
-
-function createEndtime(start, duration) {
-  const conversion = convertSeconds(duration);
-  const end = {...start};
-  end.min += Math.floor((end.s+conversion.s)/60);
-  end.s = (end.s+conversion.s)%60;
-  end.h += Math.floor((end.min+conversion.min)/60);
-  end.min = (end.min+conversion.min)%60;
-  end.d += Math.floor(end.h/24);
-  end.h = end.h%24;
-  return end;
-}
-
 const Details = ({data, points}) => {
   const {walkDistance, duration, legs, startTime, endTime} = data?.plan?.itineraries[0];
-  const time_start = convertDatetime(startTime);
-  const time_end = createEndtime(time_start,duration);
-  const alt_end = convertDatetime(endTime);
-  console.log(time_end, alt_end);
-  /*console.log(startTime);
-  console.log(duration);
-  console.log(time_start, time_end);
-  */
-  const today = new Date();
   const Legs = () => {
     return <Timeline>
       {legs.map(leg => {
@@ -140,8 +84,9 @@ const Details = ({data, points}) => {
             alignItems: 'flexStart',
             width: '15rem'
           }}>
-            <Typography>Matkan pituus: {sanitiseDistance(leg.distance)}</Typography>
+            <Typography>Etapin lähtö: {sanitiseDatetime(leg.startTime)}</Typography>
             <Typography>Matka-aika: {sanitiseSeconds(leg.duration)}</Typography>
+            <Typography>Etapin pituus: {sanitiseDistance(leg.distance)}</Typography>
           </TimelineOppositeContent>
         </TimelineItem>;
       })}
@@ -150,8 +95,9 @@ const Details = ({data, points}) => {
 
   return <Card sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', alignContent: 'center', backgroundColor: 'transparent'}}>
     <Typography variant='subtitle1' sx={{marginTop: '0.5rem'}} >{points.start} - {points.end}</Typography>
-    <Typography>Lähtöaika: {time_start.h < 10 && '0'}{time_start.h}:{time_start.min < 10 && '0'}{time_start.min}</Typography>
-    <Typography>Saapumisaika: {time_end.h < 10 && '0'}{time_end.h}:{time_end.min < 10 && '0'}{time_end.min}</Typography>
+    <Typography>Lähtö: {sanitiseDatetime(startTime)}</Typography>
+    <Typography>Saapuminen: {sanitiseDatetime(endTime)}</Typography>
+    <Typography>Matka-aika: {sanitiseSeconds(duration)}</Typography>
     <Typography>Kävelyä: {sanitiseDistance(walkDistance)}</Typography>
     {legs && <Legs/>}
   </Card>;
@@ -206,7 +152,8 @@ export const Itinerary = (props) => {
       walkReluctance: 2.1,
       transportModes: getModes()
     },
-    pollInterval: 30000
+    pollInterval: 30000,
+    fetchPolicy: 'network-only'
   };
   const [loadItinerary, { called, data, error, loading, refetch }] = useLazyQuery(ITINERARY, options);
   
