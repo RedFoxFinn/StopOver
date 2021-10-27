@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](https://github.com/RedFoxFinn/StopOver/compare/v0.7.1...v0.8.0) (2021-10-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* altered query fragments & updated data rendering on itinerary
+
+* improved itinerary with testing & tuned query fragments ([3a426c9](https://github.com/RedFoxFinn/StopOver/commit/3a426c9df6121d69712b13474ccc6f4b11df6dd1))
+
 ### [0.7.1](https://github.com/RedFoxFinn/StopOver/compare/v0.7.0...v0.7.1) (2021-10-25)
 
 
