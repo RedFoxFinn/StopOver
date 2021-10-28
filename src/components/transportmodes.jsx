@@ -8,18 +8,6 @@ import ToggleButton from '@mui/material/ToggleButton';
 
 import { HslHrtIcon } from '../icons/HslHrtIcon';
 
-/**const modes = Object.freeze({
-  BICYCLE: {mode: 'BICYCLE'},
-  BUS: {mode: 'BUS'},
-  CAR: {mode: 'CAR'},
-  FERRY: {mode: 'FERRY'},
-  RAIL: {mode: 'RAIL'},
-  SUBWAY: {mode: 'SUBWAY'},
-  TRAM: {mode: 'TRAM'},
-  TRANSIT: {mode: 'TRANSIT'},
-  WALK: {mode: 'WALK'}
-}); */
-
 export const Transportmodes = (props) => {
   const dispatch = useDispatch();
   const {

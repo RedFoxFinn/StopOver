@@ -16,6 +16,7 @@ import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 
 import {HslHrtIcon} from '../icons/HslHrtIcon';
 
+import { mode } from '../controllers/app/transportmodes';
 import { sanitiseDatetime, sanitiseDistance, sanitiseSeconds } from '../controllers/app/sanitisers';
 import {ITINERARY} from '../controllers/graphql/queries/itinerary';
 
@@ -25,70 +26,75 @@ import {ITINERARY} from '../controllers/graphql/queries/itinerary';
  * ILNI: Itinerary Loading Not Initialized, shown when component loading but not started querying of data
  */
 
+const Leg = ({leg, legIndex, numberofLegs, previousLegMode}) => {
+  let stop_s;
+  if (leg.from.stop) {
+    stop_s = leg.from.stop;
+  }
+  return <TimelineItem key={legIndex} >
+    <TimelineContent sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flexStart',
+      width: '15rem'
+    }}>
+      {leg.from?.stop && <React.Fragment>
+        <Typography>{leg.mode === 'RAIL' || leg.mode === 'SUBWAY' || (leg.mode === 'WALK' && previousLegMode === 'RAIL' || previousLegMode === 'SUBWAY') ? 'Asema' : 'Pysäkki'}: {stop_s.name}</Typography>
+        {leg.mode === 'RAIL' || leg.mode === 'SUBWAY'
+          ? <Typography>Laituri: {stop_s.platformCode}</Typography> 
+          : leg.mode !== 'WALK' && <Typography>Pysäkkitunnus: {stop_s.code}</Typography>}
+        {leg.mode !== 'WALK' && <Typography>Linja: {leg.trip.route.shortName} - {leg.trip.tripHeadsign}</Typography>}
+      </React.Fragment>}
+      <Typography>Eteneminen: {mode(leg.mode)}</Typography>
+    </TimelineContent>
+    <TimelineSeparator >
+      {leg.mode === 'WALK' && <TimelineDot variant='outlined' color='other' >
+        <DirectionsWalkIcon sx={{fontSize: '1.25rem'}} />
+      </TimelineDot>}
+      {leg.mode === 'BICYCLE' && <TimelineDot variant='outlined' color='bicycle' >
+        <HslHrtIcon name='bicycleIcon' height='1.25rem' />
+      </TimelineDot>}
+      {leg.mode === 'BUS' && <TimelineDot variant='outlined' color='bus' >
+        <HslHrtIcon name='busIcon' height='1.25rem' />
+      </TimelineDot>}
+      {leg.mode === 'CAR' && <TimelineDot variant='outlined' color='other' >
+        <HslHrtIcon name='carIcon' height='1.25rem' />
+      </TimelineDot>}
+      {leg.mode === 'TRAM' && <TimelineDot variant='outlined' color='tram' >
+        <HslHrtIcon name='tramIcon' height='1.25rem' />
+      </TimelineDot>}
+      {leg.mode === 'RAIL' && <TimelineDot variant='outlined' color='train' >
+        <HslHrtIcon name='trainIcon' height='1.25rem' />
+      </TimelineDot>}
+      {leg.mode === 'SUBWAY' && <TimelineDot variant='outlined' color='subway' >
+        <HslHrtIcon name='metroIcon' height='1.25rem' />
+      </TimelineDot>}
+      {leg.mode === 'FERRY' && <TimelineDot variant='outlined' color='ferry' >
+        <HslHrtIcon name='ferryIcon' height='1.25rem' />
+      </TimelineDot>}
+      {legIndex < numberofLegs && <TimelineConnector />}
+    </TimelineSeparator>
+    <TimelineOppositeContent sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flexStart',
+      width: '15rem'
+    }}>
+      <Typography>Etapin lähtö: {sanitiseDatetime(leg.startTime)}</Typography>
+      <Typography>Matka-aika: {sanitiseSeconds(leg.duration)}</Typography>
+      <Typography>Etapin pituus: {sanitiseDistance(leg.distance)}</Typography>
+    </TimelineOppositeContent>
+  </TimelineItem>;
+};
+
 const Details = ({data, points}) => {
   const {walkDistance, duration, legs, startTime, endTime} = data?.plan?.itineraries[0];
   const Legs = () => {
     return <Timeline>
       {legs.map(leg => {
         const legIndex = legs.indexOf(leg);
-        let stop_s;
-        if (leg.from.stop) {
-          stop_s = leg.from.stop;
-        }
-        return <TimelineItem key={legIndex} >
-          <TimelineContent sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flexStart',
-            width: '15rem'
-          }}>
-            {leg.from?.stop && <React.Fragment>
-              <Typography>{leg.mode === 'RAIL' || leg.mode === 'SUBWAY' || (leg.mode === 'WALK' && legs[legIndex-1].mode === 'RAIL' || legs[legIndex-1].mode === 'SUBWAY') ? 'Asema' : 'Pysäkki'}: {stop_s.name}</Typography>
-              {leg.mode === 'RAIL' || leg.mode === 'SUBWAY'
-                ? <Typography>Laituri: {stop_s.platformCode}</Typography> 
-                : leg.mode !== 'WALK' && <Typography>Pysäkkitunnus: {stop_s.code}</Typography>}
-              {leg.mode !== 'WALK' && <Typography>Linja: {leg.trip.route.shortName} - {leg.trip.tripHeadsign}</Typography>}
-            </React.Fragment>}
-            <Typography>{leg.mode}</Typography>
-          </TimelineContent>
-          <TimelineSeparator>
-            {leg.mode === 'WALK' && <TimelineDot variant='outlined' color='other' >
-              <DirectionsWalkIcon sx={{fontSize: '1.25rem'}} />
-            </TimelineDot>}
-            {leg.mode === 'BICYCLE' && <TimelineDot variant='outlined' color='bicycle' >
-              <HslHrtIcon name='bicycleIcon' height='1.25rem' />
-            </TimelineDot>}
-            {leg.mode === 'BUS' && <TimelineDot variant='outlined' color='bus' >
-              <HslHrtIcon name='busIcon' height='1.25rem' />
-            </TimelineDot>}
-            {leg.mode === 'CAR' && <TimelineDot variant='outlined' color='other' >
-              <HslHrtIcon name='carIcon' height='1.25rem' />
-            </TimelineDot>}
-            {leg.mode === 'TRAM' && <TimelineDot variant='outlined' color='tram' >
-              <HslHrtIcon name='tramIcon' height='1.25rem' />
-            </TimelineDot>}
-            {leg.mode === 'RAIL' && <TimelineDot variant='outlined' color='train' >
-              <HslHrtIcon name='trainIcon' height='1.25rem' />
-            </TimelineDot>}
-            {leg.mode === 'SUBWAY' && <TimelineDot variant='outlined' color='subway' >
-              <HslHrtIcon name='metroIcon' height='1.25rem' />
-            </TimelineDot>}
-            {leg.mode === 'FERRY' && <TimelineDot variant='outlined' color='ferry' >
-              <HslHrtIcon name='ferryIcon' height='1.25rem' />
-            </TimelineDot>}
-            {legIndex < legs.length-1 && <TimelineConnector />}
-          </TimelineSeparator>
-          <TimelineOppositeContent sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flexStart',
-            width: '15rem'
-          }}>
-            <Typography>Etapin lähtö: {sanitiseDatetime(leg.startTime)}</Typography>
-            <Typography>Matka-aika: {sanitiseSeconds(leg.duration)}</Typography>
-            <Typography>Etapin pituus: {sanitiseDistance(leg.distance)}</Typography>
-          </TimelineOppositeContent>
-        </TimelineItem>;
+        const prev = legs[legIndex-1];
+        return <Leg leg={leg} legIndex={legIndex} key={`leg-${legIndex}`} numberofLegs={legs.length} previousLegMode={prev?.mode} />;
       })}
     </Timeline>;
   };
