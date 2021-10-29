@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.7](https://github.com/RedFoxFinn/StopOver/compare/v0.8.6...v0.8.7) (2021-10-29)
+
+
+### Bug Fixes
+
+* timelineconnector from last leg is obsolete ([376e28a](https://github.com/RedFoxFinn/StopOver/commit/376e28a93a0c2359c6b661555c1726bd63f6fca0))
+
 ### [0.8.6](https://github.com/RedFoxFinn/StopOver/compare/v0.8.5...v0.8.6) (2021-10-29)
 
 ### [0.8.5](https://github.com/RedFoxFinn/StopOver/compare/v0.8.4...v0.8.5) (2021-10-29)
