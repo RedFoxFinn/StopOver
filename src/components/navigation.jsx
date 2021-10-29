@@ -20,10 +20,6 @@ const Navigation = ({id}) => {
         to='/planning'
         component={NavLink}
       >Reittisuunnittelu</Button>
-      <Button
-        to='/settings'
-        component={NavLink}
-      >Asetukset</Button>
     </ButtonGroup>
   </nav>;
 };
@@ -34,9 +30,16 @@ export const Routing = (props) => {
     <Switch>
       <Route path='/planning' children={<InputModule id={`${props.id}.planning`} />} />
       <Route exact path='/' children={<Itineraries id={`${props.id}.routes`} />}/>
-      <Route path='/settings' children={<Settings id={`${props.id}.settings`} />}/>
     </Switch>
   </section>;
 };
+
+/* 
+   <Button
+        to='/settings'
+        component={NavLink}
+      >Asetukset</Button>
+*/
+/* <Route path='/settings' children={<Settings id={`${props.id}.settings`} />}/> */
 
 export default Navigation;

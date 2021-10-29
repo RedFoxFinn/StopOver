@@ -141,8 +141,6 @@ export const AddressInput = ({end = false, start = false, id = 'default'}) => {
       }}
       noValidate
       autoComplete="off"
-      key={id}
-      id={id}
     >
       <Divider>
         <Chip icon={<PinDropIcon/>} label={start ? 'Aloituspiste' : 'Päätepiste'} color='info' variant='outlined' />

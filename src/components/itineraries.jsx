@@ -38,7 +38,7 @@ export const Itineraries = (props) => {
       <Box sx={{
         margin: '0.5rem 1rem'
       }}>
-        {routes && routes.length > 0 ? routes.map(route => <Itinerary route={route} mode={modes.USER} key={routes.indexOf(route)} />) : <Typography variant='subtitle1' >Käyttäjällä ei ole suosikkireittejä</Typography>}
+        {routes && routes.length > 0 ? routes.map(route => <Itinerary id={`${id}-${routes.indexOf(route)}.itinerary`} route={route} mode={modes.USER} key={routes.indexOf(route)} />) : <Typography variant='subtitle1' >Käyttäjällä ei ole suosikkireittejä</Typography>}
       </Box>
     </Card>;
   };
@@ -64,7 +64,7 @@ export const Itineraries = (props) => {
         <Box sx={{
           margin: '0.5rem 1rem'
         }}>
-          {defaultroute ? <Itinerary route={defaultroute} mode={modes.DEFAULT} /> : <Typography variant='subtitle1' >Oletusreittiä ei ole asetettu</Typography>}
+          {defaultroute ? <Itinerary id={`${id}.itinerary`} route={defaultroute} mode={modes.DEFAULT} /> : <Typography variant='subtitle1' >Oletusreittiä ei ole asetettu</Typography>}
         </Box>
       </Card>
       : null;

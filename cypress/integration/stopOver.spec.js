@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-describe('stopOver - application UI tests', () => {
+describe('stopOver - application UI & integration tests', () => {
   let dummy = false;
   it('dummy', () => {
     expect(dummy).to.be.false;
@@ -9,6 +9,79 @@ describe('stopOver - application UI tests', () => {
     expect(dummy).to.be.true;
   });
   it('StopOver loads', () => {
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
+    cy.get('[id="rff.app.stopover.navigation"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.snack"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.snack"]').contains('Oletusreitti luotu');
+  });
+  it('Route - pre- & afterquery', () => {
+    cy.visit('/');
+    cy.get('[id="rff.app.stopover.content.routes"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.planning"]').should('not.to.exist');
+    cy.get('[id="rff.app.stopover.content.settings"]').should('not.to.exist');
+    cy.get('[id="rff.app.stopover.content.routes.default-route"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.routes.default-route"]').contains('Oletusreitti');
+    cy.get('[id="rff.app.stopover.content.routes.default-route"]').contains('Oletusreittiä ei ole asetettu');
+    cy.get('[id="rff.app.stopover.snack"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.snack"]').contains('Oletusreitti luotu');
+    cy.get('[id="rff.app.stopover.content.routes.default-route"]').contains('Itinerary loading');
+    cy.get('[id="rff.app.stopover.content.routes.default-route.itinerary"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.routes.default-route.itinerary"]').contains('Hotelli Nuuksio - Maria 01');
+    cy.get('[id="rff.app.stopover.content.routes.default-route.itinerary"]').contains('Lähtö:');
+    cy.get('[id="rff.app.stopover.content.routes.default-route.itinerary"]').contains('Saapuminen:');
+    cy.get('[id="rff.app.stopover.content.routes.default-route.itinerary"]').contains('Matka-aika: ~');
+    cy.get('[id="rff.app.stopover.content.routes.default-route.itinerary"]').contains('Kävelyä:');
+    cy.get('[id="rff.app.stopover.content.routes.default-route.itinerary"]').contains('Eteneminen:');
+    cy.get('[id="rff.app.stopover.content.routes.default-route.itinerary"]').contains('Etapin lähtö:');
+    cy.get('[id="rff.app.stopover.content.routes.default-route.itinerary"]').contains('Etapin pituus:');
+    cy.get('[id="rff.app.stopover.content.routes.default-route.itinerary"]').contains('Pysäkki:');
+    cy.get('[id="rff.app.stopover.content.routes.default-route.itinerary"]').contains('Pysäkkitunnus:');
+    cy.get('[id="rff.app.stopover.content.routes.default-route.itinerary"]').contains('Linja:');
+  });
+  it('Planning', () => {
+    cy.visit('/#/planning');
+    cy.get('[id="rff.app.stopover.content.routes"]').should('not.to.exist');
+    cy.get('[id="rff.app.stopover.content.planning"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.settings"]').should('not.to.exist');
+    cy.get('[id="rff.app.stopover.content.planning.generate-route"]').should('to.exist').and('be.visible').and('be.disabled');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-start"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-start"]').contains('Aloituspiste');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-start-street"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-start-street"]').type('Aleksanterinkatu');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-start-number"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-start-number"]').type('15');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-start-municipality"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-start-municipality"]').type('Helsinki');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-start-name"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-start-name"]').type('Aleksi 15');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-start-query"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-start-query"]').click();
+    cy.get('[id="rff.app.stopover.content.planning.address-form-start-set"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-start-set"]').contains('Aloituspiste asetettu');
+    cy.get('[id="rff.app.stopover.snack"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.snack"]').contains('Aloituspiste asetettu');
+    cy.get('[id="rff.app.stopover.content.planning.generate-route"]').should('to.exist').and('be.visible').and('be.disabled');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-end"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-end"]').contains('Päätepiste');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-end-street"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-end-street"]').type('Tietotie');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-end-number"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-end-number"]').type('15');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-end-municipality"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-end-municipality"]').type('Vantaa');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-end-name"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-end-name"]').type('Tietotie');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-end-query"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-end-query"]').click();
+    cy.get('[id="rff.app.stopover.content.planning.address-form-end-set"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-end-set"]').contains('Päätepiste asetettu');
+    cy.get('[id="rff.app.stopover.snack"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.snack"]').contains('Päätepiste asetettu');
+    cy.get('[id="rff.app.stopover.content.planning.generate-route"]').should('to.exist').and('be.visible').and('be.enabled');
+    cy.get('[id="rff.app.stopover.content.planning.generate-route"]').click();
+    cy.get('[id="rff.app.stopover.content.planning.generate-route"]').should('to.exist').and('be.visible').and('be.disabled');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-start"]').should('to.exist').and('be.visible');
+    cy.get('[id="rff.app.stopover.content.planning.address-form-end"]').should('to.exist').and('be.visible');
   });
 });

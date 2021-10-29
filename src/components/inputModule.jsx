@@ -1,6 +1,7 @@
 import React, {  } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
 
 import { AddressInput, StartSet, EndSet } from './addressInput';
 import { createRoute } from '../controllers/app/routecreator';
@@ -31,11 +32,13 @@ export const InputModule = (props) => {
 
   const handleRouteCreation = (event) => {
     const route = createRoute(startAddress, endAddress);
-    addLocalRoute(route);
-    dispatch({type: 'route_control/addRoute', route: route});
-    dispatch({type: 'notification_control/setAlert', alert: {mode: 'success', message: 'Reitti luotu'}});
-    dispatch({type: 'location_end/resetEnd'});
-    dispatch({type: 'location_start/resetStart'});
+    const actions = [
+      {type: 'route_control/addRoute', route: route},
+      {type: 'notification_control/setAlert', alert: {mode: 'success', message: 'Reitti luotu'}},
+      {type: 'location_end/resetEnd'},
+      {type: 'location_start/resetStart'}
+    ];
+    actions.forEach(action => dispatch(action));
   };
 
   const checkStartGeocode = () => {
@@ -45,9 +48,9 @@ export const InputModule = (props) => {
     return endAddress && endAddress.geocode !== null && endAddress.geocode.hasOwnProperty('lat');
   };
 
-  return <section id={props.id} data-testid={props.id} >
-    {checkStartGeocode() ? <StartSet id={`${props.id}.address-form-start`}/> : <AddressInput id={`${props.id}.address-form-start`} end={false} start={true} />}
-    {checkEndGeocode() ? <EndSet id={`${props.id}.address-form-end`}/> : <AddressInput id={`${props.id}.address-form-end`} end={true} start={false} />}
+  return <Card id={props.id} data-testid={props.id} key={props.id} component='form' noValidate autoComplete="off">
+    {checkStartGeocode() ? <StartSet id={`${props.id}.address-form-start-set`}/> : <AddressInput id={`${props.id}.address-form-start`} end={false} start={true} />}
+    {checkEndGeocode() ? <EndSet id={`${props.id}.address-form-end-set`}/> : <AddressInput id={`${props.id}.address-form-end`} end={true} start={false} />}
     {process.env.NODE_ENV !== 'production' && <AddressInput />}
     <Button
       id={`${props.id}.generate-route`}
@@ -58,5 +61,5 @@ export const InputModule = (props) => {
       disabled={!checkStartGeocode() || !checkEndGeocode()}
       onClick={handleRouteCreation}
     >Luo reitti</Button>
-  </section>;
+  </Card>;
 };
