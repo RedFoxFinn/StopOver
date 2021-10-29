@@ -77,10 +77,13 @@ describe('routing - integration tests', () => {
     expect(component).toBeTruthy();
     isCompositeComponentWithType(component, InputModule);
   });
+});
+
+/*
   it('routing "/settings" >> Settings', () => {
     act(() => userEvent.click(screen.getByText('Asetukset')));
     const component = screen.queryByTestId(`${baseid}.routing.settings`);
     expect(component).toBeTruthy();
     isCompositeComponentWithType(component, Settings);
   });
-});
+ */
