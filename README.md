@@ -23,3 +23,10 @@ The frontend of the app. Without this one there wouldn't be graphical applicatio
 
 ## Features
 
+- On the front page is view for routes
+- Transport mode selector itself works but in current setup doesn't affect anything since it caused whole app to crash.
+- Route planner is on the second subpage.
+- Planner gives ability to give street address, street number, city/town (municipality) nad optionally also name for the route point.
+- Both start- and endpoints have button to create that point.
+- After the both points have been set, route creating button will be active for setting that up.
+- After route creation that route will be visible on the front page under user defined routes.
