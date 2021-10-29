@@ -72,7 +72,7 @@ const Leg = ({leg, legIndex, numberofLegs, previousLegMode}) => {
       {leg.mode === 'FERRY' && <TimelineDot variant='outlined' color='ferry' >
         <HslHrtIcon name='ferryIcon' height='1.25rem' />
       </TimelineDot>}
-      {legIndex < numberofLegs && <TimelineConnector />}
+      {legIndex < numberofLegs-1 && <TimelineConnector />}
     </TimelineSeparator>
     <TimelineOppositeContent sx={{
       display: 'flex',
