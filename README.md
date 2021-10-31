@@ -10,6 +10,9 @@ Application that'll make public transportation in Helsinki region easier.
 ![test/build/deploy](https://github.com/RedFoxFinn/StopOver/workflows/test\/build\/deploy/badge.svg)
 
 [![codecov](https://codecov.io/gh/RedFoxFinn/StopOver/branch/front/graph/badge.svg?token=R6GU7IO8S5)](https://codecov.io/gh/RedFoxFinn/StopOver)
+[![StopOver](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/count/vigydz/front&style=plastic&logo=cypress)](https://dashboard.cypress.io/projects/vigydz/runs)
+
+[![StopOver](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/vigydz/front&style=plastic&logo=cypress)](https://dashboard.cypress.io/projects/vigydz/runs)
 
 ## Problem to solve
 
@@ -41,10 +44,6 @@ On the frontend I've used some vanilla JS (EcmaScript) magic and some cool libra
 ### API
 
 I use [HSL Routing API](https://digitransit.fi/en/developers/apis/1-routing-api/) for having up-to-date data on the view and for precise routing with HSL API I use [Nominatim Geocoding API](https://nominatim.openstreetmap.org/) for converting user defined addresses to JSON data containing latitude and longitude.
-
-### Electron ?
-
-Hmm.... Maybe...
 
 ### Docker ?
 
