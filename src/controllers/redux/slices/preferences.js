@@ -4,6 +4,7 @@ export const preferencesSlice = createSlice({
   name: 'preferences',
   initialState: {
     useDefaultRoute: true,
+    useModeSelector: false,
     all: true,
     bicycle: false,
     bus: false,

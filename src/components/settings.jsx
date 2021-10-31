@@ -22,7 +22,7 @@ export const Settings = ({id}) => {
       : dispatch({type: 'preferences/enableDefaultRoute'});
   };
 
-  const Selector = () => {
+  const DefaultRouteSelector = () => {
     const selectorId = `${id}.default-route-${useDefaultRoute ? 'disable' : 'enable'}`;
     return <Button
       color={useDefaultRoute ? 'error' : 'success'}
@@ -74,7 +74,7 @@ export const Settings = ({id}) => {
       alignItems: 'center'
     }}>
       <DefaultRouteStatus/>
-      <Selector />
+      <DefaultRouteSelector />
     </Box>
   </Card>;
 };

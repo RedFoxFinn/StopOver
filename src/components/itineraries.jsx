@@ -16,7 +16,7 @@ export const modes = Object.freeze({
 });
 
 export const Itineraries = (props) => {
-  const { useDefaultRoute } = useSelector(state => state.preferences);
+  const { useDefaultRoute, useModeSelector } = useSelector(state => state.preferences);
   const {routes, defaultroute} = useSelector(state => state.route);
 
   const RenderRoutes = ({id}) => {
@@ -73,7 +73,7 @@ export const Itineraries = (props) => {
   return <section id={props.id} data-testid={props.id} style={{
     display: 'inline-flex'
   }} >
-    <Transportmodes id={`${props.id}.modeselector`} />
+    {useModeSelector && <Transportmodes id={`${props.id}.modeselector`} />}
     <article style={{margin: '0.5rem', marginLeft: '1.5rem'}}>
       <RenderDefaultRoute id={`${props.id}.default-route`} />
       <RenderRoutes id={`${props.id}.user-routes`} />
